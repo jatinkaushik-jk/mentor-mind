@@ -27,7 +27,7 @@ import {
 const Navbar = () => {
   return (
     <>
-      <div className="flex items-center justify-between px-4 py-3 max-w-7xl mx-auto">
+      <div className="flex items-center justify-between px-4 py-3 max-w-7xl mx-auto bg-white">
         <Link href="/" className="text-2xl font-bold">
           Mentor Mind
         </Link>
@@ -63,9 +63,9 @@ const Navbar = () => {
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link href="#contributors" legacyBehavior passHref>
+                <Link href="#team" legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                    Contributors
+                    Team
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
@@ -126,11 +126,11 @@ const Navbar = () => {
                     </Link>
                   </NavigationMenuItem>
                   <NavigationMenuItem>
-                    <Link href="#contributors" legacyBehavior passHref>
+                    <Link href="#team" legacyBehavior passHref>
                       <NavigationMenuLink
                         className={navigationMenuTriggerStyle() + " text-lg"}
                       >
-                        Contributors
+                        Team
                       </NavigationMenuLink>
                     </Link>
                   </NavigationMenuItem>
