@@ -23,7 +23,7 @@ const AboutSection = () => {
         </p>
         <ul className="grid sm:grid-cols-2 gap-6 mt-4">
           <li>
-            <div className="w-16 mb-4 aspect-square bg-white rounded-full shadow-lg flex justify-center items-center">
+            <div className="w-16 mb-4 aspect-square bg-secondary rounded-full shadow-lg flex justify-center items-center">
               <Sparkles />
             </div>
             <h4 className="font-bold">AI-Powered Skill Recommendations</h4>
@@ -32,21 +32,21 @@ const AboutSection = () => {
             </p>
           </li>
           <li>
-            <div className="w-16 mb-4 aspect-square bg-white rounded-full shadow-lg flex justify-center items-center">
+            <div className="w-16 mb-4 aspect-square bg-secondary rounded-full shadow-lg flex justify-center items-center">
               <Map />
             </div>
             <h4 className="font-bold">Personalized Learning Roadmaps</h4>
             <p>Structured learning plans tailored just for you</p>
           </li>
           <li>
-            <div className="w-16 mb-4 aspect-square bg-white rounded-full shadow-lg flex justify-center items-center">
+            <div className="w-16 mb-4 aspect-square bg-secondary rounded-full shadow-lg flex justify-center items-center">
               <Presentation />
             </div>
             <h4 className="font-bold">Real-World Project Challenges</h4>
             <p>Hands-on projects to strengthen your expertise</p>
           </li>
           <li>
-            <div className="w-16 mb-4 aspect-square bg-white rounded-full shadow-lg flex justify-center items-center">
+            <div className="w-16 mb-4 aspect-square bg-secondary rounded-full shadow-lg flex justify-center items-center">
               <Shapes />
             </div>
             <h4 className="font-bold">AI-Driven Mentorship</h4>

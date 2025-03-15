@@ -1,4 +1,4 @@
-import { Presentation } from "lucide-react";
+import { Presentation, AlignEndHorizontal } from "lucide-react";
 
 const FeatureSection = () => {
   return (
@@ -14,7 +14,7 @@ const FeatureSection = () => {
         career resources.
       </p>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-20 text-center sm:w-5/6 mx-auto">
-        <div className="feature-card p-4 aspect-square w-full bg-cyan-200 rounded-lg flex flex-col justify-evenly items-center ">
+        <div className="feature-card p-4 aspect-square w-full bg-accent shadow-md rounded-lg flex flex-col justify-evenly items-center hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
           <div className="p-4 rounded-full border-2 border-accent-foreground">
             <Presentation />
           </div>
@@ -26,7 +26,19 @@ const FeatureSection = () => {
             </p>
           </div>
         </div>
-        <div className="feature-card p-4 aspect-square w-full bg-cyan-200 rounded-lg flex flex-col justify-evenly items-center ">
+        <div className="feature-card p-4 aspect-square w-full bg-accent shadow-md rounded-lg flex flex-col justify-evenly items-center hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
+          <div className="p-4 rounded-full border-2 border-accent-foreground">
+            <AlignEndHorizontal />
+          </div>
+          <div className="space-y-2">
+            <p className="font-bold text-lg">Smart Skill Finder </p>
+            <p>
+              AI suggests high-demand skills based on your interests & market
+              trends.
+            </p>
+          </div>
+        </div>
+        <div className="feature-card p-4 aspect-square w-full bg-accent shadow-md rounded-lg flex flex-col justify-evenly items-center hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
           <div className="p-4 rounded-full border-2 border-accent-foreground">
             <Presentation />
           </div>
@@ -38,7 +50,7 @@ const FeatureSection = () => {
             </p>
           </div>
         </div>
-        <div className="feature-card p-4 aspect-square w-full bg-cyan-200 rounded-lg flex flex-col justify-evenly items-center ">
+        <div className="feature-card p-4 aspect-square w-full bg-accent shadow-md rounded-lg flex flex-col justify-evenly items-center hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
           <div className="p-4 rounded-full border-2 border-accent-foreground">
             <Presentation />
           </div>
@@ -50,7 +62,7 @@ const FeatureSection = () => {
             </p>
           </div>
         </div>
-        <div className="feature-card p-4 aspect-square w-full bg-cyan-200 rounded-lg flex flex-col justify-evenly items-center ">
+        <div className="feature-card p-4 aspect-square w-full bg-accent shadow-md rounded-lg flex flex-col justify-evenly items-center hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
           <div className="p-4 rounded-full border-2 border-accent-foreground">
             <Presentation />
           </div>
@@ -62,19 +74,7 @@ const FeatureSection = () => {
             </p>
           </div>
         </div>
-        <div className="feature-card p-4 aspect-square w-full bg-cyan-200 rounded-lg flex flex-col justify-evenly items-center ">
-          <div className="p-4 rounded-full border-2 border-accent-foreground">
-            <Presentation />
-          </div>
-          <div className="space-y-2">
-            <p className="font-bold text-lg">Smart Skill Finder </p>
-            <p>
-              AI suggests high-demand skills based on your interests & market
-              trends.
-            </p>
-          </div>
-        </div>
-        <div className="feature-card p-4 aspect-square w-full bg-cyan-200 rounded-lg flex flex-col justify-evenly items-center ">
+        <div className="feature-card p-4 aspect-square w-full bg-accent shadow-md rounded-lg flex flex-col justify-evenly items-center hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
           <div className="p-4 rounded-full border-2 border-accent-foreground">
             <Presentation />
           </div>

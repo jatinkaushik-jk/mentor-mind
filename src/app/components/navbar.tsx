@@ -23,13 +23,20 @@ import {
   UserButton,
   SignInButton,
 } from "@clerk/nextjs";
+import Image from "next/image";
 
 const Navbar = () => {
   return (
     <>
-      <div className="flex items-center justify-between px-4 py-3 max-w-7xl mx-auto bg-white">
+      <div className="flex items-center justify-between px-4 py-3 max-w-7xl mx-auto bg-background">
         <Link href="/" className="text-2xl font-bold">
-          Mentor Mind
+          <Image
+            src="/logo-ltr-dark.png"
+            alt="logo"
+            width={200}
+            height={50}
+            className="aspect-auto "
+          />
         </Link>
         <div className="hidden lg:flex">
           <NavigationMenu>

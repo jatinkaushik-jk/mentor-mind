@@ -6,6 +6,7 @@ import {
   Twitter,
   Youtube,
 } from "lucide-react";
+import Image from "next/image";
 
 const Footer = () => {
   return (
@@ -13,7 +14,13 @@ const Footer = () => {
       <div className="upperSection flex flex-col sm:flex-row justify-between items-center gap-x-4 py-6 flex-wrap gap-y-12">
         <div className="logo">
           <span className="text-4xl font-bold text-nowrap text-gray-800 dark:text-gray-100">
-            Mentor Mind
+            <Image
+              src="/logo-ltr-dark.png"
+              alt="logo"
+              width={220}
+              height={50}
+              className="aspect-auto "
+            />
           </span>
         </div>
         <div className="fLinks flex lg:flex-row flex-wrap flex-col gap-y-6">

@@ -6,7 +6,7 @@ import Link from "next/link";
 const GettingStartedSection = () => {
   return (
     <div id="gettingStarted" className="my-36 md:my-52 sm:p-4 p-1">
-      <div className="bg-accent-foreground max-w-[1024px] mx-auto flex flex-col lg:flex-row justify-evenly items-center gap-4 px-2 sm:px-8 pt-12 rounded-lg">
+      <div className="bg-accent-foreground dark:bg-accent max-w-[1024px] mx-auto flex flex-col lg:flex-row justify-evenly items-center gap-4 px-2 sm:px-8 pt-12 rounded-lg">
         <div className="pb-12">
           <h3 className="text-5xl font-bold text-pretty my-4 text-slate-50 dark:text-slate-900">
             Your Future Starts Today!
