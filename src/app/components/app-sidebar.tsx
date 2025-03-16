@@ -1,0 +1,104 @@
+"use client";
+import {
+  Map,
+  Home,
+  Search,
+  Settings,
+  Shapes,
+  UserRoundSearch,
+} from "lucide-react";
+
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+} from "@/components/ui/sidebar";
+import Image from "next/image";
+import Link from "next/link";
+import { SignedIn, UserButton } from "@clerk/nextjs";
+import { usePathname } from "next/navigation";
+
+// Menu items.
+const items = [
+  {
+    title: "Home",
+    url: "/dashboard",
+    icon: Home,
+  },
+  {
+    title: "Skills",
+    url: "/dashboard/skills",
+    icon: Shapes,
+  },
+  {
+    title: "Roadmap",
+    url: "/dashboard/roadmap",
+    icon: Map,
+  },
+  {
+    title: "Careers",
+    url: "/dashboard/careers",
+    icon: UserRoundSearch,
+  },
+  {
+    title: "Settings",
+    url: "/dashboard/settings",
+    icon: Settings,
+  },
+];
+
+export function AppSidebar() {
+  const path = usePathname();
+  return (
+    <Sidebar>
+      <SidebarContent>
+        <SidebarGroup>
+          <SidebarGroupLabel className="p-4 mt-2">
+            <Link href="/" className="text-2xl font-bold">
+              <Image
+                src="/logo-ltr-dark.png"
+                alt="logo"
+                width={150}
+                height={50}
+                className="aspect-auto "
+              />
+            </Link>
+          </SidebarGroupLabel>
+          <SidebarGroupContent className="p-2 mt-2">
+            <SidebarMenu>
+              {items.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton asChild isActive={path === item.url}>
+                    <Link href={item.url} className="p-4 py-[1.1rem]">
+                      <item.icon />
+                      <span>{item.title}</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+      </SidebarContent>
+      <SidebarFooter>
+        <SignedIn>
+          <div className="flex flex-row items-center p-4 gap-x-2">
+            <UserButton />
+            <div className="leading-6 cursor-context-menu">
+              <div>
+                <b>username</b>
+              </div>
+              <div className="text-sm">email@example.com</div>
+            </div>
+          </div>
+        </SignedIn>
+      </SidebarFooter>
+    </Sidebar>
+  );
+}
