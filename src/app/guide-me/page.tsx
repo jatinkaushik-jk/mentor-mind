@@ -1,10 +1,10 @@
 "use client";
 import { useState, useEffect, ReactNode } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Info from "../components/ProgressPages/info";
-import Description from "../components/ProgressPages/education";
-import Confirmation from "../components/ProgressPages/confirmation";
-import Success from "../components/ProgressPages/submit";
+import Info from "./ProgressPages/info";
+import Description from "./ProgressPages/experience";
+import Confirmation from "./ProgressPages/career";
+import Success from "./ProgressPages/recommendation";
 import Progressbar from "../components/progressbar";
 import { ProgressContext } from "../../../Context/ProgressContext";
 import ProgressbarControl from "../components/progressbarControl";
@@ -30,7 +30,7 @@ export default function Guide() {
     }
   }, []);
 
-  const progress = ["Info", "Education", "Professional Info", "Submit"];
+  const progress = ["Personal Info", "Experience", "Career Goals", "Recommendation"];
 
   const displayProgress = (progress: number): ReactNode => {
     const variants = {
@@ -91,8 +91,8 @@ export default function Guide() {
   };
 
   return (
-    <div className="md:w-1/2 lg:max-w-lg mx-auto shadow-xl rounded-2xl pb-2 bg-white">
-      <div className="container horizontal mt-5">
+    <div className="lg:w-[1024px] w-full mx-auto shadow-xl min-h-screen pb-2 bg-white">
+      <div className="container">
         <Progressbar progress={progress} currentProgress={currentProgress} />
 
         <div className="px-5 pt-5 md:px-10 md:pt-10">
@@ -100,7 +100,7 @@ export default function Guide() {
             {displayProgress(currentProgress)}
           </ProgressContext.Provider>
 
-          <div className="mt-10">
+          <div>
             <ProgressbarControl handleClick={handleClick} currentProgress={currentProgress} progress={progress} />
           </div>
         </div>

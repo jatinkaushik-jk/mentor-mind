@@ -1,7 +1,8 @@
 import { useContext, ChangeEvent, FormEvent } from 'react';
 import { ProgressContext } from '../../../../Context/ProgressContext';
-import { Input } from '@/components/ui/input';
+import { Input } from '@/components/ui/guideInput';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Label } from '@/components/ui/label';
 
 export default function Info() {
   const context = useContext(ProgressContext);
@@ -32,10 +33,39 @@ export default function Info() {
     }));
   };
 
+  const handleEducationChange = (value: string) => {
+    setUserData((prevUserData) => ({
+      ...prevUserData,
+      educationLevel: value,
+    }));
+  };
+
+  const educationOptions = ["School", "Undergraduate", "Post Graduate", "Graduate", "Self-Learner"];
+
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    console.log("Personal Information Submitted", userData);
+    // console.log("Personal Information Submitted", userData);
   };
+
+  const showSelect = (label: string, name: string, options: string[], value: string, onChange: (value: string) => void) => (
+    <div className="w-full mb-2">
+      <Label className='ml-1 mb-1.5' htmlFor={name}>{label}</Label>
+      <Select onValueChange={onChange} defaultValue={value || ""}>
+        <SelectTrigger className="w-full">
+          <SelectValue placeholder={`Select ${label}`} />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectGroup>
+            {options.map((option, index) => (
+              <SelectItem key={index} value={option}>
+                {option}
+              </SelectItem>
+            ))}
+          </SelectGroup>
+        </SelectContent>
+      </Select>
+    </div>
+  );
 
   return (
     <form onSubmit={handleSubmit} className='flex flex-col gap-3'>
@@ -45,9 +75,9 @@ export default function Info() {
 
       {formFields.map((field) => (
         <div key={field.name} className='w-full mb-2 flex-1'>
-          <label className='text-gray-700 ml-1' htmlFor={field.name}>
+          <Label className='ml-1 mb-1.5' htmlFor={field.name}>
             {field.label}
-          </label>
+          </Label>
           <Input
             onChange={handleChange}
             autoComplete='off'
@@ -59,23 +89,9 @@ export default function Info() {
         </div>
       ))}
 
-      <div className="w-full mb-2">
-        <label className='text-gray-700 ml-1' htmlFor="ageGroup">Age Group</label>
-        <Select onValueChange={handleAgeChange} defaultValue={userData.ageGroup || ""}>
-          <SelectTrigger className="w-full">
-            <SelectValue placeholder="Select Age Group" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectGroup>
-              <SelectItem value="16-20">16-20</SelectItem>
-              <SelectItem value="21-25">21-25</SelectItem>
-              <SelectItem value="26-30">26-30</SelectItem>
-              <SelectItem value="31-35">31-35</SelectItem>
-              <SelectItem value="36+">Greater than 36</SelectItem>
-            </SelectGroup>
-          </SelectContent>
-        </Select>
-      </div>
+      {showSelect("Age Group", "ageGroup", ["16-20", "21-25", "26+"], userData.ageGroup, handleAgeChange)}
+      {showSelect("Current Education", "educationLevel", educationOptions, userData.educationLevel, handleEducationChange)}
+
     </form>
   );
 }

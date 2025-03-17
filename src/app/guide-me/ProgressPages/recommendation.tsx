@@ -17,6 +17,7 @@ const Success: React.FC = () => {
 
         // Log finalData to console
         console.log("Final Data:", finalData);
+        // console.log("User Data:", userData);
       }
     }
   }, [context, router]);
@@ -31,10 +32,9 @@ const Success: React.FC = () => {
     { key: 'userName', label: 'User Name' },
     { key: 'email', label: 'Email' },
     { key: 'ageGroup', label: 'Age Group' }, // Age group added here
-    { key: 'educationLevel', label: 'Highest Education Level' },
-    { key: 'university', label: 'University/College Name' },
-    { key: 'graduationYear', label: 'Graduation Year' },
-    { key: 'certifications', label: 'Certificates' },
+    { key: 'educationLevel', label: 'Education' },
+    { key: 'currentField', label: 'Current Field' },
+    { key: 'currentSkill', label: 'Current Skills' },
     { key: 'experience', label: 'Years of Experience' },
     { key: 'careerGoal', label: 'Career Goals' },
     { key: 'primaryLearningGoal', label: 'Primary Learning Goals' },
@@ -57,6 +57,8 @@ const Success: React.FC = () => {
               {key === 'careerGoal' && userData[key] === 'Other' && `, ${userData.otherCareerGoal || 'N/A'}`}
               {key === 'primaryLearningGoal' && userData[key] === 'Other' && `, ${userData.otherPrimaryLearningGoal || 'N/A'}`}
               {key === 'learningPreference' && userData[key] === 'Other' && `, ${userData.otherLearningPreference || 'N/A'}`}
+              {key === 'currentField' && userData[key] === 'Other' && `, ${userData.customcurrentField || 'N/A'}`}
+              {key === 'currentSkill' && userData[key] === 'Other' && `, ${userData.customcurrentSkill || 'N/A'}`}
             </li>
           ))}
         </ul>

@@ -1,5 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { SignInButton } from '@clerk/nextjs';
 
 interface ProgressbarControlProps {
   handleClick: (direction: string) => void;
@@ -9,18 +11,18 @@ interface ProgressbarControlProps {
 
 const ProgressbarControl: React.FC<ProgressbarControlProps> = ({ handleClick, currentProgress, progress }) => {
   return (
-    <div className='container flex justify-between mb-4'>
-      <button onClick={() => handleClick("back")} className={`uppercase py-1 px-4 rounded-sm font-semibold border-1 border-slate-300 transition duration-200 ease-in-out ${currentProgress === 1 ? "opacity-50 bg-white text-slate-900 cursor-not-allowed " : "!bg-gray-50 text-gray-500 hover:!bg-slate-200 hover:text-gray-900 cursor-pointer"}`}>
-        Back
-      </button>
+    <div className='container flex justify-between mb-4 fixed left-1/2 -translate-x-1/2 bottom-0 p-4 bg-white w-full lg:w-[1024px]'>
+      <Button variant="outline" className='bg-white' onClick={() => handleClick("back")} disabled={currentProgress === 1}>
+        BACK
+      </Button>
       {currentProgress === progress.length ? (
-        <Link href="/login" className='text-primary uppercase py-1 px-4 rounded-sm font-semibold cursor-pointer border-1 border-primary hover:bg-primary hover:text-white transition duration-200 ease-in-out'>
-          Login
-        </Link>
+        <Button asChild>
+        <SignInButton>LOGIN</SignInButton>
+      </Button>
       ) : (
-        <button type='submit' onClick={() => handleClick("next")} className='border-primary text-primary rounded-sm uppercase py-1 px-4 font-semibold cursor-pointer border-1 hover:bg-primary hover:text-white transition duration-200 ease-in-out'>
-          Next
-        </button>
+        <Button type='submit' onClick={() => handleClick("next")} >
+          NEXT
+        </Button>
       )}
     </div>
   );
