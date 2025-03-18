@@ -4,7 +4,6 @@ import Footer from "./components/footer";
 import GettingStartedSection from "./components/gettingStarted";
 import { HeroSection } from "./components/hero";
 import Navbar from "./components/navbar";
-import TeamSection from "./components/team";
 
 export default function Home() {
   return (
@@ -17,7 +16,6 @@ export default function Home() {
         <AboutSection />
         <FeatureSection />
         <GettingStartedSection />
-        <TeamSection />
       </main>
       <footer>
         <Footer />
