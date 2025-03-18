@@ -1,7 +1,5 @@
-import React from 'react';
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { SignInButton } from '@clerk/nextjs';
+import React from "react";
+import { Button } from "@/components/ui/button";
 
 interface ProgressbarControlProps {
   handleClick: (direction: string) => void;
@@ -9,23 +7,25 @@ interface ProgressbarControlProps {
   progress: string[];
 }
 
-const ProgressbarControl: React.FC<ProgressbarControlProps> = ({ handleClick, currentProgress, progress }) => {
+const ProgressbarControl: React.FC<ProgressbarControlProps> = ({
+  handleClick,
+  currentProgress,
+}) => {
   return (
-    <div className='container flex justify-between mb-4 fixed left-1/2 -translate-x-1/2 bottom-0 p-4 bg-white w-full lg:w-[1024px]'>
-      <Button variant="outline" className='bg-white' onClick={() => handleClick("back")} disabled={currentProgress === 1}>
+    <div className="container flex justify-between fixed left-1/2 -translate-x-1/2 bottom-0 p-4 bg-white w-full lg:w-[1024px]">
+      <Button
+        variant="outline"
+        className="bg-white"
+        onClick={() => handleClick("back")}
+        disabled={currentProgress === 1}
+      >
         BACK
       </Button>
-      {currentProgress === progress.length ? (
-        <Button asChild>
-        <SignInButton>LOGIN</SignInButton>
+      <Button type="submit" onClick={() => handleClick("next")}>
+        NEXT
       </Button>
-      ) : (
-        <Button type='submit' onClick={() => handleClick("next")} >
-          NEXT
-        </Button>
-      )}
     </div>
   );
-}
+};
 
 export default ProgressbarControl;

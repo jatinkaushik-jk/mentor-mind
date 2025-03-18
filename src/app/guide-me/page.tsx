@@ -30,7 +30,12 @@ export default function Guide() {
     }
   }, []);
 
-  const progress = ["Personal Info", "Experience", "Career Goals", "Recommendation"];
+  const progress = [
+    "Personal Info",
+    "Experience",
+    "Career Goals",
+    "Recommendation",
+  ];
 
   const displayProgress = (progress: number): ReactNode => {
     const variants = {
@@ -38,7 +43,11 @@ export default function Guide() {
         opacity: 0,
         x: direction === "next" ? 50 : -50, // Next moves from right, back moves from left
       }),
-      animate: { opacity: 1, x: 0, transition: { duration: 0.4, ease: "easeInOut" } },
+      animate: {
+        opacity: 1,
+        x: 0,
+        transition: { duration: 0.4, ease: "easeInOut" },
+      },
       exit: (direction: "next" | "back") => ({
         opacity: 0,
         x: direction === "next" ? -50 : 50, // Next exits to left, back exits to right
@@ -63,7 +72,8 @@ export default function Guide() {
           exit="exit"
           custom={direction}
         >
-          {pages[progress] || <Info />} {/* Fallback to Info if progress is out of bounds */}
+          {pages[progress] || <Info />}{" "}
+          {/* Fallback to Info if progress is out of bounds */}
         </motion.div>
       </AnimatePresence>
     );
@@ -95,13 +105,28 @@ export default function Guide() {
       <div className="container">
         <Progressbar progress={progress} currentProgress={currentProgress} />
 
-        <div className="px-5 pt-5 md:px-10 md:pt-10">
-          <ProgressContext.Provider value={{ currentProgress, setCurrentProgress, userData, setUserData, finalData, setFinalData }}>
+        <div className="p-4">
+          <ProgressContext.Provider
+            value={{
+              currentProgress,
+              setCurrentProgress,
+              userData,
+              setUserData,
+              finalData,
+              setFinalData,
+            }}
+          >
             {displayProgress(currentProgress)}
           </ProgressContext.Provider>
 
           <div>
-            <ProgressbarControl handleClick={handleClick} currentProgress={currentProgress} progress={progress} />
+            {currentProgress < progress.length && (
+              <ProgressbarControl
+                handleClick={handleClick}
+                currentProgress={currentProgress}
+                progress={progress}
+              />
+            )}
           </div>
         </div>
       </div>
