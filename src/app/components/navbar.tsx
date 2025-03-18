@@ -120,7 +120,7 @@ const Navbar = () => {
             <Button asChild>
               <SignInButton>Login</SignInButton>
             </Button>
-            <Button asChild variant="ghost">
+            <Button asChild variant="ghost" className="w-full">
               <SignUpButton></SignUpButton>
             </Button>
           </SignedOut>
