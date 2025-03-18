@@ -124,7 +124,7 @@ const Navbar = () => {
                     </Link>
                   </NavigationMenuItem>
                   <NavigationMenuItem>
-                    <Link href="#get-started" legacyBehavior passHref>
+                    <Link href="#getting-started" legacyBehavior passHref>
                       <NavigationMenuLink
                         className={navigationMenuTriggerStyle() + " text-lg"}
                       >
@@ -171,7 +171,7 @@ const Navbar = () => {
             <Button asChild>
               <SignInButton>Login</SignInButton>
             </Button>
-            <Button asChild variant="ghost" className="border border-transparent hover:border-primary cursor-pointer text-primary hover:text-primary hover:bg-transparent">
+            <Button asChild variant="ghost" className="w-full">
               <SignUpButton></SignUpButton>
             </Button>
           </SignedOut>
