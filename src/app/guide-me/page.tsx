@@ -92,7 +92,7 @@ export default function Guide() {
 
   return (
     <div className="lg:w-[1024px] w-full mx-auto shadow-xl min-h-screen pb-2 bg-white">
-      <div className="container">
+      <div className="">
         <Progressbar progress={progress} currentProgress={currentProgress} />
 
         <div className="px-5 pt-5 md:px-10 md:pt-10">

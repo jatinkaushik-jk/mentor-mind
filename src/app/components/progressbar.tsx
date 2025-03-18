@@ -54,8 +54,8 @@ const Progressbar: React.FC<ProgressbarProps> = ({ progress, currentProgress }) 
         </Link>
           <div className="p-4 flex justify-evenly gap-x-0 items-center">
       {newProgress.map((progress, index) => (
-        <div key={index} className={index !== newProgress.length - 1 ? "w-full flex items-center" : "flex items-center"}>
-          <div className="flex flex-col justify-center gap-y-3 items-center text-primary">
+        <div key={index} className={index !== newProgress.length - 1 ? "flex items-center w-14 sm:w-full" : "flex items-center"}>
+          <div className="flex flex-col justify-between  gap-y-3 items-center text-primary">
             <div className={`rounded-full transition duration-500 ease-in-out border-2 border-gray-300 h-9 w-9 flex items-center justify-center py-3 ${progress.selected ? "text-primary font-bold border border-primary" : "bg-white"}`}>
               {progress.completed && index < currentProgress - 1 ? (
                 <span className="text-primary font-bold text-xl">&#10003;</span>
@@ -63,7 +63,7 @@ const Progressbar: React.FC<ProgressbarProps> = ({ progress, currentProgress }) 
                 index + 1
               )}
             </div>
-            <div className={`text-sm top-0 text-center w-32 text-[0.5rem] md:text-xs font-medium uppercase ${progress.highlighted ? "text-primary" : "text-gray-400"}`}>
+            <div className={`text-sm top-0 text-center w-32 text-[0.5rem] md:text-xs font-medium uppercase hidden sm:block ${progress.highlighted ? "text-primary" : "text-gray-400"}`}>
               {progress.description}
             </div>
           </div>

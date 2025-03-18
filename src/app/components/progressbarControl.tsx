@@ -11,7 +11,7 @@ interface ProgressbarControlProps {
 
 const ProgressbarControl: React.FC<ProgressbarControlProps> = ({ handleClick, currentProgress, progress }) => {
   return (
-    <div className='container flex justify-between mb-4 fixed left-1/2 -translate-x-1/2 bottom-0 p-4 bg-white w-full lg:w-[1024px]'>
+    <div className='flex justify-between mb-4 fixed left-1/2 -translate-x-1/2 bottom-0 p-4 px-9 w-full lg:w-[1024px]'>
       <Button variant="outline" className='bg-white' onClick={() => handleClick("back")} disabled={currentProgress === 1}>
         BACK
       </Button>

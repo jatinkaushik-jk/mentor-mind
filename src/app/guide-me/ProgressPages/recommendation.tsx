@@ -43,7 +43,7 @@ const Success: React.FC = () => {
 
   return (
     <div className="flex flex-col items-center justify-center max-h-screen bg-blue-50 p-6">
-      <h1 className="text-4xl font-bold text-primary mb-4">Congratulations!</h1>
+      <h1 className="text-2xl sm:text-4xl font-bold text-primary mb-4">Congratulations!</h1>
       <p className="text-lg text-primary mb-6">Your operation was successful.</p>
 
       <div className="bg-white shadow-lg rounded-lg p-6 w-full max-w-md">

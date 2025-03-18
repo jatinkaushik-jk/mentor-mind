@@ -25,14 +25,15 @@ export default function Confirmation() {
   const [customInputs, setCustomInputs] = useState({
     careerGoal: userData.otherCareerGoal || "",
     primaryLearningGoal: userData.otherPrimaryLearningGoal || "",
-    learningPreference: userData.otherLearningPreference || "",
   });
 
   const handleChange = (field: string, value: string) => {
     setUserData((prevUserData) => ({
       ...prevUserData,
       [field]: value,
-      [`other${field.charAt(0).toUpperCase() + field.slice(1)}`]: value === "Other" ? customInputs[field] : "",
+      ...(field !== "learningPreference" && value === "Other" && {
+        [`other${field.charAt(0).toUpperCase() + field.slice(1)}`]: customInputs[field],
+      }),
     }));
 
     if (value !== "Other") {
@@ -51,10 +52,12 @@ export default function Confirmation() {
   };
 
   const handleOtherBlur = (field: string) => {
-    setUserData((prevUserData) => ({
-      ...prevUserData,
-      [`other${field.charAt(0).toUpperCase() + field.slice(1)}`]: customInputs[field],
-    }));
+    if (field !== "learningPreference") {
+      setUserData((prevUserData) => ({
+        ...prevUserData,
+        [`other${field.charAt(0).toUpperCase() + field.slice(1)}`]: customInputs[field],
+      }));
+    }
   };
 
   const Options = [
