@@ -117,33 +117,8 @@
 @layer base {
   * {
     @apply border-border outline-ring/50;
-    scroll-behavior: smooth;
   }
   body {
     @apply bg-background text-foreground;
   }
 }
-
-/* Width of the scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-/* Track (the background of the scrollbar) */
-::-webkit-scrollbar-track {
-  background: #edf9f0; 
-  border-radius: 10px;
-}
-
-/* Handle (the draggable part of the scrollbar) */
-::-webkit-scrollbar-thumb {
-  background: var(--color-green-600); 
-  border-radius: 10px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #555; 
-}
-
