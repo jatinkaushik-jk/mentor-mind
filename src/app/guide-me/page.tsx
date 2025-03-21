@@ -2,31 +2,45 @@
 import { useState, useEffect, ReactNode } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Info from "./ProgressPages/info";
-import Description from "./ProgressPages/experience";
-import Confirmation from "./ProgressPages/career";
-import Success from "./ProgressPages/recommendation";
+import Experience from "./ProgressPages/experience";
+import Career from "./ProgressPages/career";
+import Recommendation from "./ProgressPages/recommendation";
 import Progressbar from "../components/progressbar";
-import { ProgressContext } from "../../../Context/ProgressContext";
+import { GuideFormData, ProgressContext } from "../Context/ProgressContext";
 import ProgressbarControl from "../components/progressbarControl";
+import Image from "next/image";
 
-interface UserData {
-  [key: string]: any;
-}
-
-interface FinalData {
-  userData: UserData;
-}
+// interface FinalData {
+//   userData: GuideFormData;
+// }
 
 export default function Guide() {
   const [currentProgress, setCurrentProgress] = useState<number>(1);
-  const [userData, setUserData] = useState<UserData>({});
-  const [finalData, setFinalData] = useState<FinalData | null>(null);
-  const [direction, setDirection] = useState<"next" | "back">("next"); // Track transition direction
+  // const [finalData, setFinalData] = useState<FinalData | null>(null);
+  const [direction, setDirection] = useState<string>("next"); // Track transition direction
+  const [guideFormData, setGuideFormData] = useState<GuideFormData>({
+    userProfile: {
+      fullName: "",
+      email: "",
+      ageGroup: "",
+      educationLevel: "",
+    },
+    backgroundExperience: {
+      currentField: "",
+      currentSkills: "",
+      experience: "",
+    },
+    careerGoals: {
+      preferredCareerPath: "",
+      primaryLearningGoal: "",
+      learningPreference: "",
+    },
+  });
 
   useEffect(() => {
-    const storedFinalData = localStorage.getItem("finalData");
-    if (storedFinalData) {
-      console.log("Final Data:", JSON.parse(storedFinalData));
+    const storedGuideFormData = localStorage.getItem("GuideFormData");
+    if (storedGuideFormData) {
+      console.log("Guide Form Data:", JSON.parse(storedGuideFormData));
     }
   }, []);
 
@@ -57,9 +71,9 @@ export default function Guide() {
 
     const pages: { [key: number]: ReactNode } = {
       1: <Info />,
-      2: <Description />,
-      3: <Confirmation />,
-      4: <Success />,
+      2: <Experience />,
+      3: <Career />,
+      4: <Recommendation />,
     };
 
     return (
@@ -71,6 +85,7 @@ export default function Guide() {
           animate="animate"
           exit="exit"
           custom={direction}
+          className="w-full px-4"
         >
           {pages[progress] || <Info />}{" "}
           {/* Fallback to Info if progress is out of bounds */}
@@ -79,7 +94,7 @@ export default function Guide() {
     );
   };
 
-  const handleClick = (action: "next" | "back") => {
+  const handleClick = (action: string) => {
     let newProgress = currentProgress;
     setDirection(action); // Set transition direction
 
@@ -92,42 +107,50 @@ export default function Guide() {
     if (newProgress > 0 && newProgress <= progress.length) {
       setCurrentProgress(newProgress);
       if (newProgress === progress.length) {
-        const allData = { userData };
-        setFinalData(allData);
-        localStorage.setItem("finalData", JSON.stringify(allData));
-        console.log("Final Data:", allData);
+        const formData = guideFormData;
+        setGuideFormData(formData);
+        localStorage.setItem("GuideFormData", JSON.stringify(formData));
+        console.log("Guide Form Data:", formData);
       }
     }
   };
 
   return (
     <div className="lg:w-[1024px] w-full mx-auto shadow-xl min-h-screen pb-2 bg-white">
-      <div className="container">
+      <div>
         <Progressbar progress={progress} currentProgress={currentProgress} />
 
-        <div className="p-4">
+        <div className="p-4 md:flex flex-row w-full items-center justify-center gap-x-10">
           <ProgressContext.Provider
             value={{
               currentProgress,
               setCurrentProgress,
-              userData,
-              setUserData,
-              finalData,
-              setFinalData,
+              guideFormData,
+              setGuideFormData,
             }}
           >
             {displayProgress(currentProgress)}
           </ProgressContext.Provider>
-
-          <div>
-            {currentProgress < progress.length && (
-              <ProgressbarControl
-                handleClick={handleClick}
-                currentProgress={currentProgress}
-                progress={progress}
-              />
-            )}
-          </div>
+          {currentProgress < progress.length && (
+            <div className="hidden md:flex">
+              <Image
+                src="/form-image.svg"
+                width={400}
+                height={400}
+                alt="form-image"
+                className="p-8 translate-y-5"
+              ></Image>
+            </div>
+          )}
+        </div>
+        <div>
+          {currentProgress < progress.length && (
+            <ProgressbarControl
+              handleClick={handleClick}
+              currentProgress={currentProgress}
+              progress={progress}
+            />
+          )}
         </div>
       </div>
     </div>

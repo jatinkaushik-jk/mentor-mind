@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 
 interface ProgressbarControlProps {
-  handleClick: (direction: string) => void;
+  handleClick: (action: string) => void;
   currentProgress: number;
   progress: string[];
 }
