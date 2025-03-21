@@ -1,11 +1,11 @@
 "use client";
 import {
-  Map,
-  Home,
-  Search,
   Settings,
-  Shapes,
-  UserRoundSearch,
+  Stars,
+  BookOpen,
+  ChartLine,
+  MessageSquare,
+  Users,
 } from "lucide-react";
 
 import {
@@ -27,24 +27,29 @@ import { usePathname } from "next/navigation";
 // Menu items.
 const items = [
   {
-    title: "Home",
+    title: "Overview",
     url: "/dashboard",
-    icon: Home,
+    icon: Stars,
   },
   {
-    title: "Skills",
-    url: "/dashboard/skills",
-    icon: Shapes,
+    title: "Learnings",
+    url: "/dashboard/learnings",
+    icon: BookOpen,
   },
   {
-    title: "Roadmap",
-    url: "/dashboard/roadmap",
-    icon: Map,
-  },
-  {
-    title: "Careers",
+    title: "Career Insights",
     url: "/dashboard/careers",
-    icon: UserRoundSearch,
+    icon: ChartLine,
+  },
+  {
+    title: "AI Mentor",
+    url: "/dashboard/ai-mentor",
+    icon: MessageSquare,
+  },
+  {
+    title: "Community",
+    url: "/dashboard/community",
+    icon: Users,
   },
   {
     title: "Settings",

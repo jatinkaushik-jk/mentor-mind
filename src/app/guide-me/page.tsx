@@ -107,10 +107,9 @@ export default function Guide() {
     if (newProgress > 0 && newProgress <= progress.length) {
       setCurrentProgress(newProgress);
       if (newProgress === progress.length) {
-        const formData = guideFormData;
+        const formData = { ...guideFormData };
         setGuideFormData(formData);
         localStorage.setItem("GuideFormData", JSON.stringify(formData));
-        console.log("Guide Form Data:", formData);
       }
     }
   };

@@ -16,8 +16,6 @@ const Info: React.FC = () => {
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    console.log(value);
-
     setGuideFormData((prevData) => ({
       ...prevData,
       userProfile: {
@@ -28,7 +26,6 @@ const Info: React.FC = () => {
   };
 
   const handleAgeChange = (value: string) => {
-    console.log(value);
     setGuideFormData((prevData) => ({
       ...prevData,
       userProfile: {
@@ -39,7 +36,6 @@ const Info: React.FC = () => {
   };
 
   const handleEducationChange = (value: string) => {
-    console.log(value);
     setGuideFormData((prevData) => ({
       ...prevData,
       userProfile: {
@@ -59,7 +55,6 @@ const Info: React.FC = () => {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    // console.log("Personal Information Submitted", userData);
   };
 
   useEffect(() => {}, []);

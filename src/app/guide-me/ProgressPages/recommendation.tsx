@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import { useRouter } from "next/navigation";
 import { ProgressContext } from "../../Context/ProgressContext";
 import SkillCard from "@/app/components/skillCard";
@@ -20,10 +20,22 @@ interface SkillsRecommendations {
 
 const Recommendation: React.FC = () => {
   const context = useContext(ProgressContext);
+  const [isloading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
   const [skillCards, setSkillCards] = React.useState<SkillsRecommendations[]>(
     []
   );
+
+  async function getRecommendations() {
+    try {
+      setIsLoading(true);
+      // const response = await fetch('/server/ai-skills-recommendations')
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false);
+    }
+  }
 
   useEffect(() => {
     setSkillCards([
@@ -56,10 +68,6 @@ const Recommendation: React.FC = () => {
       const { guideFormData } = context;
       if (typeof window !== "undefined") {
         localStorage.setItem("guideFormData", JSON.stringify(guideFormData));
-        // localStorage.setItem("finalData", JSON.stringify(finalData));
-
-        // Log finalData to console
-        // console.log("Final Data:", finalData);
         console.log("Guide Form Data:", guideFormData);
       }
     }
