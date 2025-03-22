@@ -1,7 +1,7 @@
 interface PromptSuggestionsProps {
-  label: string
-  append: (message: { role: "user"; content: string }) => void
-  suggestions: string[]
+  label: string;
+  append: (message: { role: "user"; content: string }) => void;
+  suggestions: string[];
 }
 
 export function PromptSuggestions({
@@ -12,17 +12,17 @@ export function PromptSuggestions({
   return (
     <div className="space-y-6">
       <h2 className="text-center text-2xl font-bold">{label}</h2>
-      <div className="flex gap-6 text-sm">
+      <div className="flex flex-col sm:flex-row gap-6 text-sm">
         {suggestions.map((suggestion) => (
           <button
             key={suggestion}
             onClick={() => append({ role: "user", content: suggestion })}
-            className="h-max flex-1 rounded-xl border bg-background p-4 hover:bg-muted"
+            className="h-max flex-1 rounded-xl border bg-background p-4 hover:bg-accent"
           >
             <p>{suggestion}</p>
           </button>
         ))}
       </div>
     </div>
-  )
+  );
 }
