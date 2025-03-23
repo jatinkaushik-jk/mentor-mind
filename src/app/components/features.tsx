@@ -1,4 +1,4 @@
-import { Presentation, AlignEndHorizontal } from "lucide-react";
+import { Presentation, AlignEndHorizontal, Waypoints, BrainCircuit, BotMessageSquareIcon, BotMessageSquare, TrendingUpDown, ChartArea, ClipboardCheck } from "lucide-react";
 
 const FeatureSection = () => {
   return (
@@ -16,7 +16,7 @@ const FeatureSection = () => {
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-20 text-center sm:w-5/6 mx-auto">
         <div className="feature-card p-4 aspect-square w-full bg-accent shadow-md rounded-lg flex flex-col justify-evenly items-center hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
           <div className="p-4 rounded-full border-2 border-accent-foreground">
-            <Presentation />
+            <BrainCircuit />
           </div>
           <div className="space-y-2">
             <p className="font-bold text-lg">Smart Skill Finder </p>
@@ -28,61 +28,62 @@ const FeatureSection = () => {
         </div>
         <div className="feature-card p-4 aspect-square w-full bg-accent shadow-md rounded-lg flex flex-col justify-evenly items-center hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
           <div className="p-4 rounded-full border-2 border-accent-foreground">
-            <AlignEndHorizontal />
+            <Waypoints />
           </div>
           <div className="space-y-2">
-            <p className="font-bold text-lg">Smart Skill Finder </p>
+            <p className="font-bold text-lg">Interactive Learning Roadmaps </p>
             <p>
-              AI suggests high-demand skills based on your interests & market
-              trends.
+            A structured step-by-step plan with courses, tutorials, and projects.
+
             </p>
           </div>
         </div>
         <div className="feature-card p-4 aspect-square w-full bg-accent shadow-md rounded-lg flex flex-col justify-evenly items-center hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
           <div className="p-4 rounded-full border-2 border-accent-foreground">
-            <Presentation />
+            <BotMessageSquare />
           </div>
           <div className="space-y-2">
-            <p className="font-bold text-lg">Smart Skill Finder </p>
+            <p className="font-bold text-lg">AI-Powered Mentor </p>
             <p>
-              AI suggests high-demand skills based on your interests & market
-              trends.
+            Get instant answers to career, skill, and interview-related queries.
+
             </p>
           </div>
         </div>
         <div className="feature-card p-4 aspect-square w-full bg-accent shadow-md rounded-lg flex flex-col justify-evenly items-center hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
           <div className="p-4 rounded-full border-2 border-accent-foreground">
-            <Presentation />
+            <ClipboardCheck />
           </div>
           <div className="space-y-2">
-            <p className="font-bold text-lg">Smart Skill Finder </p>
+            <p className="font-bold text-lg">Hands-On Projects </p>
             <p>
-              AI suggests high-demand skills based on your interests & market
-              trends.
+            Work on industry-relevant challenges to build real-world experience.
+
             </p>
           </div>
         </div>
         <div className="feature-card p-4 aspect-square w-full bg-accent shadow-md rounded-lg flex flex-col justify-evenly items-center hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
           <div className="p-4 rounded-full border-2 border-accent-foreground">
-            <Presentation />
+            <ChartArea />
           </div>
           <div className="space-y-2">
-            <p className="font-bold text-lg">Smart Skill Finder </p>
+            <p className="font-bold text-lg">Live Progress Tracking </p>
             <p>
-              AI suggests high-demand skills based on your interests & market
-              trends.
+            Monitor your learning journey, achievements, and certifications.
+
             </p>
           </div>
         </div>
         <div className="feature-card p-4 aspect-square w-full bg-accent shadow-md rounded-lg flex flex-col justify-evenly items-center hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
           <div className="p-4 rounded-full border-2 border-accent-foreground">
-            <Presentation />
+            <TrendingUpDown />
+          
           </div>
           <div className="space-y-2">
-            <p className="font-bold text-lg">Smart Skill Finder </p>
+            <p className="font-bold text-lg">Career Growth Insights </p>
             <p>
-              AI suggests high-demand skills based on your interests & market
-              trends.
+            Get job trends, salary insights, and expert guidance.
+
             </p>
           </div>
         </div>
