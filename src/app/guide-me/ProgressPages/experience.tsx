@@ -1,5 +1,5 @@
-import React, { useContext, useState } from "react";
-import { ProgressContext } from "../../../../Context/ProgressContext";
+import React, { useContext } from "react";
+import { ProgressContext } from "../../Context/ProgressContext";
 import {
   Select,
   SelectTrigger,
@@ -11,7 +11,7 @@ import {
 import { Input } from "@/components/ui/guideInput";
 import { Label } from "@/components/ui/label";
 
-const Description: React.FC = () => {
+const Experience: React.FC = () => {
   const context = useContext(ProgressContext);
 
   if (!context) {
@@ -20,72 +20,13 @@ const Description: React.FC = () => {
     );
   }
 
-  const { userData, setUserData } = context;
-  const [customcurrentField, setCustomcurrentField] = useState(
-    userData.customcurrentField || ""
-  );
-  const [customcurrentSkill, setCustomcurrentSkill] = useState(
-    userData.customcurrentSkill || ""
-  );
+  const { guideFormData, setGuideFormData } = context;
 
   const handleChange = (name: string, value: string) => {
-    setUserData((prevUserData) => {
-      const updatedData = {
-        ...prevUserData,
-        [name]: value,
-      };
-  
-      if (value === "Other") {
-        if (name === "currentField") {
-          updatedData.customcurrentField = customcurrentField;
-        } else if (name === "currentSkill") {
-          updatedData.customcurrentSkill = customcurrentSkill;
-        }
-      } else {
-        delete updatedData[`custom${name.charAt(0).toUpperCase() + name.slice(1)}`];
-      }
-  
-      return updatedData;
-    });
-  
-    if (value !== "Other") {
-      if (name === "currentField") {
-        setCustomcurrentField("");
-      } else if (name === "currentSkill") {
-        setCustomcurrentSkill("");
-      }
-    }
-  };
-  
-
-  const handleCustomcurrentFieldChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setCustomcurrentField(event.target.value);
-  };
-
-  const handleCustomcurrentFieldBlur = () => {
-    if (customcurrentField.trim()) {
-      setUserData((prevUserData) => ({
-        ...prevUserData,
-        customcurrentField,
-      }));
-    }
-  };
-
-  const handleCustomcurrentSkillChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setCustomcurrentSkill(event.target.value);
-  };
-
-  const handleCustomcurrentSkillBlur = () => {
-    if (customcurrentSkill.trim()) {
-      setUserData((prevUserData) => ({
-        ...prevUserData,
-        customcurrentSkill,
-      }));
-    }
+    setGuideFormData((prevData) => ({
+      ...prevData,
+      backgroundExperience: { ...prevData.backgroundExperience, [name]: value },
+    }));
   };
 
   const currentFieldOptions = [
@@ -96,21 +37,6 @@ const Description: React.FC = () => {
     "Design",
     "Business",
     "Education",
-    "Other",
-  ];
-  const currentSkillsOptions = [
-    "JavaScript",
-    "React.js",
-    "Next.js",
-    "tailwind",
-    "nodejs",
-    "expressjs",
-    "figma",
-    "photoshop",
-    "illustrator",
-    "java",
-    "C/C++",
-    "Other",
   ];
   const experienceOptions = ["Beginner", "Intermediate", "Advanced"];
 
@@ -126,7 +52,7 @@ const Description: React.FC = () => {
         </Label>
         <Select
           onValueChange={(value) => handleChange("currentField", value)}
-          defaultValue={userData.currentField || ""}
+          defaultValue={guideFormData.backgroundExperience.currentField || ""}
         >
           <SelectTrigger className="w-full">
             <SelectValue placeholder="Select your field" />
@@ -143,68 +69,27 @@ const Description: React.FC = () => {
         </Select>
       </div>
 
-      {userData.currentField === "Other" && (
-        <div className="w-full mb-2">
-          <Label className="ml-1 mb-1.5" htmlFor="customcurrentField">
-            Current field
-          </Label>
-          <Input
-            type="text"
-            placeholder="Enter your current field"
-            value={customcurrentField}
-            onChange={handleCustomcurrentFieldChange}
-            onBlur={handleCustomcurrentFieldBlur}
-            className="w-full border-2 border-gray-300 p-2 rounded-lg focus:outline-none focus:border-primary"
-          />
-        </div>
-      )}
-
       <div className="w-full mb-2">
-        <Label className="ml-1 mb-1.5" htmlFor="currentSkill">
+        <Label className="ml-1 mb-1.5" htmlFor="currentSkills">
           Current Skills
         </Label>
-        <Select
-          onValueChange={(value) => handleChange("currentSkill", value)}
-          defaultValue={userData.currentSkill || ""}
-        >
-          <SelectTrigger className="w-full">
-            <SelectValue placeholder="Select your skills" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectGroup>
-              {currentSkillsOptions.map((skill) => (
-                <SelectItem key={skill} value={skill}>
-                  {skill}
-                </SelectItem>
-              ))}
-            </SelectGroup>
-          </SelectContent>
-        </Select>
+        <Input
+          type="text"
+          name="currentSkills"
+          placeholder="Javascript, Python, Figma, etc."
+          value={guideFormData.backgroundExperience.currentSkills || ""}
+          onChange={(e) => handleChange("currentSkills", e.target.value)}
+          maxLength={100}
+          className="w-full border-2 border-gray-300 p-2 rounded-lg focus:outline-none focus:border-primary"
+        />
       </div>
-
-      {userData.currentSkill === "Other" && (
-        <div className="w-full mb-2">
-          <Label className="ml-1 mb-1.5" htmlFor="customcurrentSkill">
-            Current skill
-          </Label>
-          <Input
-            type="text"
-            placeholder="Enter your current skill"
-            value={customcurrentSkill}
-            onChange={handleCustomcurrentSkillChange}
-            onBlur={handleCustomcurrentSkillBlur}
-            className="w-full border-2 border-gray-300 p-2 rounded-lg focus:outline-none focus:border-primary"
-          />
-        </div>
-      )}
-
       <div className="w-full mb-2">
         <Label className="ml-1 mb-1.5" htmlFor="experience">
           Experience
         </Label>
         <Select
           onValueChange={(value) => handleChange("experience", value)}
-          defaultValue={userData.experience || ""}
+          defaultValue={guideFormData.backgroundExperience.experience || ""}
         >
           <SelectTrigger className="w-full">
             <SelectValue placeholder="Select your experience level" />
@@ -224,4 +109,4 @@ const Description: React.FC = () => {
   );
 };
 
-export default Description;
+export default Experience;
