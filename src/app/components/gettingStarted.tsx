@@ -23,7 +23,7 @@ const GettingStartedSection = () => {
           </Button>
         </div>
         <div className="for-illustration lg:w-1/2 w-full px-3 sm:px-0 sm:w-2/3 aspect-square">
-          {/* <Image src="/getting-started-img.png" alt="Getting Started Image" className="object-contain object-center w-full aspect-square" /> */}
+          {/* <Image src="/success1.png" alt="Getting Started Image" height='100' width={'100'} className="object-contain object-center w-full aspect-square" /> */}
         </div>
       </div>
     </div>
