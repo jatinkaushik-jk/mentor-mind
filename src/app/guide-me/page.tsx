@@ -119,7 +119,11 @@ export default function Guide() {
       <div>
         <Progressbar progress={progress} currentProgress={currentProgress} />
 
-        <div className="p-4 md:flex flex-row w-full items-center justify-center gap-x-10">
+        <div
+          className={`p-4 md:flex flex-row w-full items-center justify-center gap-x-10 ${
+            currentProgress < progress.length && "max-w-lg mx-auto"
+          }`}
+        >
           <ProgressContext.Provider
             value={{
               currentProgress,
@@ -130,17 +134,6 @@ export default function Guide() {
           >
             {displayProgress(currentProgress)}
           </ProgressContext.Provider>
-          {currentProgress < progress.length && (
-            <div className="hidden md:flex">
-              <Image
-                src="/form-image.svg"
-                width={400}
-                height={400}
-                alt="form-image"
-                className="p-8 translate-y-5"
-              ></Image>
-            </div>
-          )}
         </div>
         <div>
           {currentProgress < progress.length && (

@@ -1,4 +1,11 @@
-import { Presentation, AlignEndHorizontal, Waypoints, BrainCircuit, BotMessageSquareIcon, BotMessageSquare, TrendingUpDown, ChartArea, ClipboardCheck } from "lucide-react";
+import {
+  Waypoints,
+  BrainCircuit,
+  BotMessageSquare,
+  TrendingUpDown,
+  ChartArea,
+  ClipboardCheck,
+} from "lucide-react";
 
 const FeatureSection = () => {
   return (
@@ -33,8 +40,8 @@ const FeatureSection = () => {
           <div className="space-y-2">
             <p className="font-bold text-lg">Interactive Learning Roadmaps </p>
             <p>
-            A structured step-by-step plan with courses, tutorials, and projects.
-
+              A structured step-by-step plan with courses, tutorials, and
+              projects.
             </p>
           </div>
         </div>
@@ -45,8 +52,8 @@ const FeatureSection = () => {
           <div className="space-y-2">
             <p className="font-bold text-lg">AI-Powered Mentor </p>
             <p>
-            Get instant answers to career, skill, and interview-related queries.
-
+              Get instant answers to career, skill, and interview-related
+              queries.
             </p>
           </div>
         </div>
@@ -57,8 +64,8 @@ const FeatureSection = () => {
           <div className="space-y-2">
             <p className="font-bold text-lg">Hands-On Projects </p>
             <p>
-            Work on industry-relevant challenges to build real-world experience.
-
+              Work on industry-relevant challenges to build real-world
+              experience.
             </p>
           </div>
         </div>
@@ -69,22 +76,17 @@ const FeatureSection = () => {
           <div className="space-y-2">
             <p className="font-bold text-lg">Live Progress Tracking </p>
             <p>
-            Monitor your learning journey, achievements, and certifications.
-
+              Monitor your learning journey, achievements, and certifications.
             </p>
           </div>
         </div>
         <div className="feature-card p-4 aspect-square w-full bg-accent shadow-md rounded-lg flex flex-col justify-evenly items-center hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
           <div className="p-4 rounded-full border-2 border-accent-foreground">
             <TrendingUpDown />
-          
           </div>
           <div className="space-y-2">
             <p className="font-bold text-lg">Career Growth Insights </p>
-            <p>
-            Get job trends, salary insights, and expert guidance.
-
-            </p>
+            <p>Get job trends, salary insights, and expert guidance.</p>
           </div>
         </div>
       </div>

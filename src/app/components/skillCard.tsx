@@ -6,7 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { SignedOut, SignInButton } from "@clerk/nextjs";
+import { SignInButton } from "@clerk/nextjs";
 import { ArrowRightCircle } from "lucide-react";
 
 interface SkillCardProps {
@@ -49,14 +49,12 @@ const SkillCard: React.FC<SkillCardProps> = ({ cardData }) => {
         </div>
       </CardContent>
       <CardFooter>
-        <SignedOut>
-          <Button asChild variant={"link"} className="group">
-            <div>
-              <SignInButton>Know more </SignInButton>
-              <ArrowRightCircle className="group-hover:translate-x-1 transition" />
-            </div>
-          </Button>
-        </SignedOut>
+        <Button asChild variant={"link"} className="group">
+          <div>
+            <SignInButton>Know more </SignInButton>
+            <ArrowRightCircle className="group-hover:translate-x-1 transition" />
+          </div>
+        </Button>
       </CardFooter>
     </Card>
   );

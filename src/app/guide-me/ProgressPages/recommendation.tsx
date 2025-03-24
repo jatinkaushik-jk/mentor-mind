@@ -161,11 +161,9 @@ const Recommendation: React.FC = () => {
               and achieve your career goals
             </p>
             <div className="flex justify-center">
-              <SignedOut>
-                <Button asChild>
-                  <SignInButton>Start Learning Path</SignInButton>
-                </Button>
-              </SignedOut>
+              <Button asChild>
+                <SignInButton>Start Learning Path</SignInButton>
+              </Button>
             </div>
           </CardContent>
         </Card>

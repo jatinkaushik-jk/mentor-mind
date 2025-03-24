@@ -47,7 +47,7 @@ const Dashboard = () => {
                   Take me to the Roadmap
                 </CardTitle>
                 <Button variant={"ghost"} asChild>
-                  <Link href="/">
+                  <Link href="/dashboard/learnings">
                     View Roadmap <ArrowRightCircle />
                   </Link>
                 </Button>
