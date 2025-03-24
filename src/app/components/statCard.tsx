@@ -23,7 +23,7 @@ export default function DashboardStats({ className }: { className?: string }) {
   return (
     <Card className={cn("w-full p-4 bg-white justify-center", className)}>
       <CardContent className="flex flex-col gap-4">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 place-items-center">
           {stats.map((stat, index) => (
             <div key={index} className="text-left space-y-1.5">
               <p className="text-sm text-muted-foreground">{stat.title}</p>
