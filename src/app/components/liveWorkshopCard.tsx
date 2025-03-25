@@ -16,7 +16,7 @@ export default function LiveWorkshopCard() {
           Gain real-world insights from industry experts. Hands-on, interactive,
           and engaging!
         </p>
-        <div className="mt-4 flex justify-between items-center">
+        <div className="mt-4 flex justify-between items-start md:items-center md:flex-row flex-col gap-4">
           <Button variant="secondary">Register Now</Button>
           <div className="flex items-center text-sm ">
             <Calendar className="w-4 h-4 mr-1" />
