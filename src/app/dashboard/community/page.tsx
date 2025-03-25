@@ -231,10 +231,10 @@ export default function WorkshopDashboard() {
       <h1 className="text-3xl sm:text-4xl font-extrabold text-center text-gray-900 mb-6 sm:mb-8">AI-Driven Workshop Dashboard</h1>
 
       <Tabs defaultValue="upcoming">
-        <TabsList className="flex flex-wrap justify-center gap-2 sm:gap-4 bg-gradient-to-r p-2 sm:p-3 rounded-lg shadow-lg text-white bg-white">
+        <TabsList className="flex flex-wrap flex-col justify-center gap-2 sm:gap-4 bg-gradient-to-r p-2 sm:p-3 rounded-lg shadow-lg text-white bg-gray-200">
           <TabsTrigger value="upcoming" className="px-4 sm:px-6 py-2 text-sm sm:text-lg font-semibold">Upcoming</TabsTrigger>
           <TabsTrigger value="previous" className="px-4 sm:px-6 py-2 text-sm sm:text-lg font-semibold">Previous</TabsTrigger>
-          <TabsTrigger value="qna" className="px-4 sm:px-6 py-2 text-sm sm:text-lg font-semibold">QnA</TabsTrigger>
+          <TabsTrigger value="qna" className="px-1 sm:px-6 py-2 text-sm sm:text-lg font-semibold">QnA</TabsTrigger>
         </TabsList>
 
         <TabsContent value="upcoming" className="mt-4 sm:mt-6">
@@ -263,7 +263,7 @@ export default function WorkshopDashboard() {
           <p>No previous workshops available.</p>
         </TabsContent>
 
-        <TabsContent value="qna" className="text-center text-gray-500 mt-4 sm:mt-6">
+        <TabsContent value="qna" className="text-center text-black mt-4 sm:mt-6">
           {/* <p>QnA section coming soon!</p> */}
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="item-1">
@@ -291,7 +291,7 @@ export default function WorkshopDashboard() {
       </Tabs>
 
       <Button className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white p-4 sm:p-5 rounded-full shadow-xl flex items-center justify-center">
-        <Plus size={24} />
+        <Plus size={24}  />
       </Button>
     </div>
   );
