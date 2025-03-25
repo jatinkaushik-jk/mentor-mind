@@ -8,7 +8,8 @@ import { Badge } from "@/components/ui/badge";
 import { BadgeCheck } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { SignedOut, SignInButton } from "@clerk/nextjs";
+import { SignInButton } from "@clerk/nextjs";
+import axios from "axios";
 
 interface SkillsRecommendations {
   skillName: string;
@@ -26,58 +27,65 @@ const Recommendation: React.FC = () => {
     []
   );
 
-  async function getRecommendations() {
+  async function getRecommendations(userData: object) {
     try {
       setIsLoading(true);
-      // const response = await fetch('/server/ai-skills-recommendations')
+      const response = await axios.post("/api/generate-skills", { userData });
+      const data =
+        (await JSON.parse(response.data.recommendations)
+          ?.skillsRecommendation) || [];
+      return data;
     } catch (error) {
-      console.log(error);
+      console.error("Error fetching recommendations:", error);
+      return null;
     } finally {
       setIsLoading(false);
     }
   }
 
   useEffect(() => {
-    setSkillCards([
-      {
-        skillName: "TypeScript",
-        trendScore: 5,
-        avgLearningTime: "~2 months",
-        jobDemand: "High",
-        futureScope:
-          "Highly valued in modern web development, especially for scaling React & Next.js applications.",
-      },
-      {
-        skillName: "Advanced UI/UX (Design Systems & Prototyping)",
-        trendScore: 5,
-        avgLearningTime: "~3-4 months",
-        jobDemand: "High",
-        futureScope:
-          "Crucial for building intuitive and scalable digital experiences; companies seek UI/UX designers proficient in Figma and interactive prototyping.",
-      },
-      {
-        skillName: "Backend with Prisma & GraphQL",
-        trendScore: 4.5,
-        avgLearningTime: "~3 months",
-        jobDemand: "High",
-        futureScope:
-          "Modern backend technologies like Prisma & GraphQL optimize data handling and are increasingly preferred for scalable applications.",
-      },
-    ]);
+    // setSkillCards([
+    //   {
+    //     skillName: "TypeScript",
+    //     trendScore: 5,
+    //     avgLearningTime: "~2 months",
+    //     jobDemand: "High",
+    //     futureScope:
+    //       "Highly valued in modern web development, especially for scaling React & Next.js applications.",
+    //   },
+    //   {
+    //     skillName: "Advanced UI/UX (Design Systems & Prototyping)",
+    //     trendScore: 5,
+    //     avgLearningTime: "~3-4 months",
+    //     jobDemand: "High",
+    //     futureScope:
+    //       "Crucial for building intuitive and scalable digital experiences; companies seek UI/UX designers proficient in Figma and interactive prototyping.",
+    //   },
+    //   {
+    //     skillName: "Backend with Prisma & GraphQL",
+    //     trendScore: 4.5,
+    //     avgLearningTime: "~3 months",
+    //     jobDemand: "High",
+    //     futureScope:
+    //       "Modern backend technologies like Prisma & GraphQL optimize data handling and are increasingly preferred for scalable applications.",
+    //   },
+    // ]);
     if (context) {
       const { guideFormData } = context;
       if (typeof window !== "undefined") {
         localStorage.setItem("guideFormData", JSON.stringify(guideFormData));
-        console.log("Guide Form Data:", guideFormData);
       }
     }
   }, [context, router]);
-
-  if (!context) {
-    return <p className="text-center text-gray-500">Loading...</p>;
-  }
-
   const { guideFormData } = context;
+
+  useEffect(() => {
+    getRecommendations(guideFormData).then((data) => setSkillCards(data));
+  }, [guideFormData]);
+
+  // if (!context) {
+  //   return <p className="text-center text-gray-500">Loading...</p>;
+  // }
 
   const formFields = [
     { key: "fullName", label: "User Name" },
@@ -104,9 +112,14 @@ const Recommendation: React.FC = () => {
         </p>
       </div>
       <div className="skillCards grid lg:grid-cols-3 gap-4 mt-8">
-        {skillCards.map((cardData, index) => (
-          <SkillCard key={index} cardData={cardData} />
-        ))}
+        {isloading ? (
+          <p>Loading...</p>
+        ) : (
+          skillCards &&
+          skillCards.map((cardData, index) => (
+            <SkillCard key={index} cardData={cardData} />
+          ))
+        )}
       </div>
       <div className="badges flex flex-col sm:flex-row justify-center items-center gap-6 mt-12">
         <Badge variant="secondary" className="text-sm">

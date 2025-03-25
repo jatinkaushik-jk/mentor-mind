@@ -22,7 +22,7 @@ export const AIChat = (props: ChatDemoProps) => {
     ...props,
     api: "/api/chat",
     body: {
-      model: "llama-3.3-70b-versatile",
+      model: "models/gemini-2.0-flash-exp",
     },
   });
 
