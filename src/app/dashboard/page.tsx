@@ -22,16 +22,16 @@ const footerData = [
 const Dashboard = () => {
   return (
     <div className="flex flex-col gap-4">
-      <div className="grid grid-cols-12 gap-4 flex-wrap ">
+      <div className="flex flex-row gap-4 lg:flex-nowrap flex-wrap">
         <UserCard
           name={"Jatin Kaushik"}
           role={"FullStack Developer"}
           avatarUrl={""}
           skills={["react", "figma"]}
-          className="col-span-3"
+          className="lg:col-span-3"
         ></UserCard>
-        <DashboardStats className="col-span-6" />
-        <StreakCard className="col-span-3" />
+        <DashboardStats className="lg:col-span-6 lg:min-w-lg" />
+        <StreakCard className="lg:col-span-3" />
       </div>
       <div>
         <h3 className="font-bold text-2xl pl-2">Welcome back, Jatin!</h3>
@@ -58,7 +58,7 @@ const Dashboard = () => {
         </div>
         <LearningActivityChart />
       </div>
-      <div className="flex gap-4">
+      <div className="flex gap-4 lg:flex-row flex-col">
         <AICareerMentorCard />
         <LiveWorkshopCard />
       </div>

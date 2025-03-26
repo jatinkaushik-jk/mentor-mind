@@ -24,7 +24,7 @@ export default function AICareerMentorCard() {
           </div>
         </div>
         <div>
-          <Rocket size={50} className="opacity-50" />
+          <Rocket size={50} className="opacity-50 hidden sm:flex" />
         </div>
       </CardContent>
     </Card>

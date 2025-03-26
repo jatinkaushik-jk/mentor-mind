@@ -41,7 +41,7 @@ const Experience: React.FC = () => {
   const experienceOptions = ["Beginner", "Intermediate", "Advanced"];
 
   return (
-    <form className="flex flex-col gap-3">
+    <div className="flex flex-col gap-3">
       <h1 className="text-2xl font-semibold text-primary mb-2">
         Background & Experience
       </h1>
@@ -53,6 +53,8 @@ const Experience: React.FC = () => {
         <Select
           onValueChange={(value) => handleChange("currentField", value)}
           defaultValue={guideFormData.backgroundExperience.currentField || ""}
+          name="currentField"
+          required={true}
         >
           <SelectTrigger className="w-full">
             <SelectValue placeholder="Select your field" />
@@ -80,6 +82,7 @@ const Experience: React.FC = () => {
           value={guideFormData.backgroundExperience.currentSkills || ""}
           onChange={(e) => handleChange("currentSkills", e.target.value)}
           maxLength={100}
+          required={true}
           className="w-full border-2 border-gray-300 p-2 rounded-lg focus:outline-none focus:border-primary"
         />
       </div>
@@ -90,6 +93,8 @@ const Experience: React.FC = () => {
         <Select
           onValueChange={(value) => handleChange("experience", value)}
           defaultValue={guideFormData.backgroundExperience.experience || ""}
+          required={true}
+          name="experience"
         >
           <SelectTrigger className="w-full">
             <SelectValue placeholder="Select your experience level" />
@@ -105,7 +110,7 @@ const Experience: React.FC = () => {
           </SelectContent>
         </Select>
       </div>
-    </form>
+    </div>
   );
 };
 

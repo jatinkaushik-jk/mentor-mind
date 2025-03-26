@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, ReactNode } from "react";
+import { useState, useEffect, ReactNode, useRef, FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Info from "./ProgressPages/info";
 import Experience from "./ProgressPages/experience";
@@ -8,15 +8,11 @@ import Recommendation from "./ProgressPages/recommendation";
 import Progressbar from "../components/progressbar";
 import { GuideFormData, ProgressContext } from "../Context/ProgressContext";
 import ProgressbarControl from "../components/progressbarControl";
-import Image from "next/image";
-
-// interface FinalData {
-//   userData: GuideFormData;
-// }
 
 export default function Guide() {
   const [currentProgress, setCurrentProgress] = useState<number>(1);
-  // const [finalData, setFinalData] = useState<FinalData | null>(null);
+  const formElement = useRef<HTMLFormElement>(null);
+  const [isNextDisabled, setIsNextDisabled] = useState<boolean>(true);
   const [direction, setDirection] = useState<string>("next"); // Track transition direction
   const [guideFormData, setGuideFormData] = useState<GuideFormData>({
     userProfile: {
@@ -50,6 +46,21 @@ export default function Guide() {
     "Career Goals",
     "Recommendation",
   ];
+
+  useEffect(() => {
+    const requiredFields: Record<number, string[]> = {
+      1: Object.values(guideFormData.userProfile),
+      2: Object.values(guideFormData.backgroundExperience),
+      3: Object.values(guideFormData.careerGoals),
+    };
+
+    const isFilled =
+      requiredFields[currentProgress]?.every(
+        (value: string) => value.trim() !== ""
+      ) ?? true;
+
+    setIsNextDisabled(!isFilled);
+  }, [guideFormData, currentProgress]);
 
   const displayProgress = (progress: number): ReactNode => {
     const variants = {
@@ -99,7 +110,7 @@ export default function Guide() {
     setDirection(action); // Set transition direction
 
     if (action === "next") {
-      newProgress++;
+      if (formElement.current?.checkValidity()) newProgress++;
     } else {
       newProgress--;
     }
@@ -114,36 +125,42 @@ export default function Guide() {
     }
   };
 
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+  };
+
   return (
     <div className="lg:w-[1024px] w-full mx-auto shadow-xl min-h-screen pb-2 bg-white">
       <div>
         <Progressbar progress={progress} currentProgress={currentProgress} />
-
-        <div
-          className={`p-4 md:flex flex-row w-full items-center justify-center gap-x-10 ${
-            currentProgress < progress.length && "max-w-lg mx-auto"
-          }`}
-        >
-          <ProgressContext.Provider
-            value={{
-              currentProgress,
-              setCurrentProgress,
-              guideFormData,
-              setGuideFormData,
-            }}
+        <form ref={formElement} onSubmit={handleSubmit}>
+          <div
+            className={`p-4 md:flex flex-row w-full items-center justify-center gap-x-10 ${
+              currentProgress < progress.length && "max-w-lg mx-auto"
+            }`}
           >
-            {displayProgress(currentProgress)}
-          </ProgressContext.Provider>
-        </div>
-        <div>
-          {currentProgress < progress.length && (
-            <ProgressbarControl
-              handleClick={handleClick}
-              currentProgress={currentProgress}
-              progress={progress}
-            />
-          )}
-        </div>
+            <ProgressContext.Provider
+              value={{
+                currentProgress,
+                setCurrentProgress,
+                guideFormData,
+                setGuideFormData,
+              }}
+            >
+              {displayProgress(currentProgress)}
+            </ProgressContext.Provider>
+          </div>
+          <div>
+            {currentProgress < progress.length && (
+              <ProgressbarControl
+                isNextDisabled={isNextDisabled}
+                handleClick={handleClick}
+                currentProgress={currentProgress}
+                progress={progress}
+              />
+            )}
+          </div>
+        </form>
       </div>
     </div>
   );

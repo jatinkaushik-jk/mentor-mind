@@ -21,7 +21,7 @@ export default function UserCard({
   return (
     <Card
       className={cn(
-        "w-full justify-center p-4 flex flex-row flex-wrap lg:flex-nowrap items-center gap-3 bg-white",
+        "w-full justify-center p-4 flex flex-row flex-wrap items-center gap-3 bg-white",
         className
       )}
     >
