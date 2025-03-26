@@ -17,11 +17,12 @@ interface SkillCardProps {
     jobDemand: string;
     futureScope: string;
   };
+  redirectURL?: string;
 }
 
-const SkillCard: React.FC<SkillCardProps> = ({ cardData }) => {
+const SkillCard: React.FC<SkillCardProps> = ({ cardData, redirectURL }) => {
   return (
-    <Card>
+    <Card className="bg-white">
       <CardHeader>
         <CardTitle className="font-bold text-lg">
           {cardData.skillName}
@@ -50,7 +51,7 @@ const SkillCard: React.FC<SkillCardProps> = ({ cardData }) => {
       </CardContent>
       <CardFooter>
         <Button asChild variant={"link"} className="group">
-          <Link href={"/dashboard/learnings"}>
+          <Link href={redirectURL || "/dashboard/learnings"}>
             Know more
             <ArrowRightCircle className="group-hover:translate-x-1 transition" />{" "}
           </Link>

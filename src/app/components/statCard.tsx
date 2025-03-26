@@ -4,17 +4,17 @@ import { cn } from "@/lib/utils";
 const stats = [
   {
     title: "Learning Hours",
-    value: "24.5",
-    change: "+2.5 this week",
+    value: "0",
+    change: "+0 this week",
   },
   {
     title: "Skills Learned",
-    value: "7",
-    change: "+2 this month",
+    value: "0",
+    change: "+0 this month",
   },
   {
     title: "Practice Projects",
-    value: "3",
+    value: "0",
     change: "of 5 Completed",
   },
 ];

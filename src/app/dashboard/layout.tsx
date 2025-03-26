@@ -20,6 +20,10 @@ import { Stars } from "lucide-react";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const path = usePathname();
+  const pathSegments = path
+    .split("/")
+    .filter((segment) => segment)
+    .slice(1);
   return (
     <SidebarProvider>
       <AppSidebar />
@@ -30,19 +34,44 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <div className="flex items-center justify-between w-full pr-1 sm:pr-4">
             <Breadcrumb>
               <BreadcrumbList>
-                {path.split("/").length > 2 ? (
+                {pathSegments.length > 0 ? (
                   <>
                     <BreadcrumbItem className="hidden md:block">
                       <BreadcrumbLink href="/dashboard">
                         Dashboard
                       </BreadcrumbLink>
                     </BreadcrumbItem>
-                    <BreadcrumbSeparator className="hidden md:block" />
+                    {/* <BreadcrumbSeparator className="hidden md:block" />
                     <BreadcrumbItem>
                       <BreadcrumbPage className="capitalize">
                         {path.split("dashboard/")[1]}
                       </BreadcrumbPage>
-                    </BreadcrumbItem>
+                    </BreadcrumbItem> */}
+                    {pathSegments.map((segment, index) => {
+                      const href = `/dashboard/${pathSegments
+                        .slice(0, index + 1)
+                        .join("/")}`;
+                      const isLast = index === pathSegments.length - 1;
+                      return (
+                        <div key={href} className="flex items-center">
+                          <BreadcrumbSeparator className="mr-1" />
+                          <BreadcrumbItem>
+                            {isLast ? (
+                              <BreadcrumbPage className="capitalize">
+                                {decodeURIComponent(segment)}
+                              </BreadcrumbPage>
+                            ) : (
+                              <BreadcrumbLink
+                                href={href}
+                                className="capitalize"
+                              >
+                                {decodeURIComponent(segment)}
+                              </BreadcrumbLink>
+                            )}
+                          </BreadcrumbItem>
+                        </div>
+                      );
+                    })}
                   </>
                 ) : (
                   <>
