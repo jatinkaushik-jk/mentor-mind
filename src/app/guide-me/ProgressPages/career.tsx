@@ -64,7 +64,7 @@ export default function Career() {
   ];
 
   return (
-    <form className="flex flex-col gap-3">
+    <div className="flex flex-col gap-3">
       <h1 className="text-2xl font-semibold text-primary mb-2">Career Goals</h1>
 
       {Options.map(({ id, label, options }) => (
@@ -75,6 +75,7 @@ export default function Career() {
           <Select
             onValueChange={(value) => handleChange(id, value)}
             defaultValue={guideFormData.careerGoals[id] || ""}
+            required={true}
           >
             <SelectTrigger className="w-full">
               <SelectValue placeholder={`Select ${label.toLowerCase()}`} />
@@ -91,6 +92,6 @@ export default function Career() {
           </Select>
         </div>
       ))}
-    </form>
+    </div>
   );
 }

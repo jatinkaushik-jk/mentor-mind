@@ -1,4 +1,4 @@
-import React, { useContext, ChangeEvent, FormEvent, useEffect } from "react";
+import React, { useContext, ChangeEvent } from "react";
 import { ProgressContext } from "../../Context/ProgressContext";
 import { Input } from "@/components/ui/guideInput";
 import {
@@ -53,12 +53,6 @@ const Info: React.FC = () => {
     "Self-Learner",
   ];
 
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-  };
-
-  useEffect(() => {}, []);
-
   const showSelect = (
     label: string,
     name: string,
@@ -70,7 +64,13 @@ const Info: React.FC = () => {
       <Label className="ml-1 mb-1.5" htmlFor={name}>
         {label}
       </Label>
-      <Select onValueChange={onChange} defaultValue={value || ""}>
+      <Select
+        onValueChange={onChange}
+        defaultValue={value || ""}
+        required={true}
+        value={undefined}
+        name={name}
+      >
         <SelectTrigger className="w-full">
           <SelectValue placeholder={`Select ${label}`} />
         </SelectTrigger>
@@ -88,7 +88,7 @@ const Info: React.FC = () => {
   );
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+    <div className="flex flex-col gap-3">
       <div>
         <h1 className="text-2xl font-semibold text-primary mb-2">
           Personal Information
@@ -106,6 +106,8 @@ const Info: React.FC = () => {
           name="fullName"
           type="text"
           placeholder="your name"
+          required={true}
+          minLength={3}
         />
       </div>
       <div className="w-full mb-2 flex-1">
@@ -117,7 +119,8 @@ const Info: React.FC = () => {
           autoComplete="off"
           value={guideFormData.userProfile.email}
           name="email"
-          type="text"
+          type="email"
+          required={true}
           placeholder="example@email.in"
         />
       </div>
@@ -135,7 +138,7 @@ const Info: React.FC = () => {
         guideFormData.userProfile.educationLevel,
         handleEducationChange
       )}
-    </form>
+    </div>
   );
 };
 
