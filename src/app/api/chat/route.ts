@@ -8,9 +8,10 @@ export async function POST(req: Request) {
   const { messages } = await req.json();
 
   const result = streamText({
-    model: google("models/gemini-2.0-flash-exp"),
+    model: google("models/gemini-2.0-flash"),
     messages,
   });
+  console.log(result.toDataStreamResponse());
 
   return result.toDataStreamResponse();
 }

@@ -10,6 +10,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { SignInButton } from "@clerk/nextjs";
 import axios from "axios";
+import Link from "next/link";
 
 interface SkillsRecommendations {
   skillName: string;
@@ -44,32 +45,6 @@ const Recommendation: React.FC = () => {
   }
 
   useEffect(() => {
-    // setSkillCards([
-    //   {
-    //     skillName: "TypeScript",
-    //     trendScore: 5,
-    //     avgLearningTime: "~2 months",
-    //     jobDemand: "High",
-    //     futureScope:
-    //       "Highly valued in modern web development, especially for scaling React & Next.js applications.",
-    //   },
-    //   {
-    //     skillName: "Advanced UI/UX (Design Systems & Prototyping)",
-    //     trendScore: 5,
-    //     avgLearningTime: "~3-4 months",
-    //     jobDemand: "High",
-    //     futureScope:
-    //       "Crucial for building intuitive and scalable digital experiences; companies seek UI/UX designers proficient in Figma and interactive prototyping.",
-    //   },
-    //   {
-    //     skillName: "Backend with Prisma & GraphQL",
-    //     trendScore: 4.5,
-    //     avgLearningTime: "~3 months",
-    //     jobDemand: "High",
-    //     futureScope:
-    //       "Modern backend technologies like Prisma & GraphQL optimize data handling and are increasingly preferred for scalable applications.",
-    //   },
-    // ]);
     if (context) {
       const { guideFormData } = context;
       if (typeof window !== "undefined") {
@@ -83,14 +58,10 @@ const Recommendation: React.FC = () => {
     getRecommendations(guideFormData).then((data) => setSkillCards(data));
   }, [guideFormData]);
 
-  // if (!context) {
-  //   return <p className="text-center text-gray-500">Loading...</p>;
-  // }
-
   const formFields = [
     { key: "fullName", label: "User Name" },
     { key: "email", label: "Email" },
-    { key: "ageGroup", label: "Age Group" }, // Age group added here
+    { key: "ageGroup", label: "Age Group" },
     { key: "educationLevel", label: "Education" },
     { key: "currentField", label: "Current Field" },
     { key: "currentSkill", label: "Current Skills" },
@@ -175,7 +146,7 @@ const Recommendation: React.FC = () => {
             </p>
             <div className="flex justify-center">
               <Button asChild>
-                <SignInButton>Start Learning Path</SignInButton>
+                <Link href={"/dashboard/learnings"}>Start Learning Path</Link>
               </Button>
             </div>
           </CardContent>
