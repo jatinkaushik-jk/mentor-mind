@@ -21,7 +21,7 @@ import {
 } from "@/components/ui/sidebar";
 import Image from "next/image";
 import Link from "next/link";
-import { SignedIn, UserButton } from "@clerk/nextjs";
+import { SignedIn, UserButton, useUser } from "@clerk/nextjs";
 import { usePathname } from "next/navigation";
 
 // Menu items.
@@ -60,6 +60,7 @@ const items = [
 
 export function AppSidebar() {
   const path = usePathname();
+  const { isSignedIn, user } = useUser();
   return (
     <Sidebar>
       <SidebarContent>
@@ -97,9 +98,12 @@ export function AppSidebar() {
             <UserButton />
             <div className="leading-6 cursor-context-menu">
               <div>
-                <b>username</b>
+                <b>{(isSignedIn && user?.fullName) || "new user"}</b>
               </div>
-              <div className="text-sm">email@example.com</div>
+              <div className="text-sm">
+                {(isSignedIn && user?.emailAddresses[0].emailAddress) ||
+                  "user@email.com"}
+              </div>
             </div>
           </div>
         </SignedIn>

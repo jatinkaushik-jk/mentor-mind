@@ -22,7 +22,7 @@ export const AIChat = (props: ChatDemoProps) => {
     ...props,
     api: "/api/chat",
     body: {
-      model: "models/gemini-2.0-flash-exp",
+      model: "models/gemini-2.0-flash",
     },
   });
 

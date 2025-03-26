@@ -36,7 +36,7 @@ export default function Guide() {
   useEffect(() => {
     const storedGuideFormData = localStorage.getItem("GuideFormData");
     if (storedGuideFormData) {
-      console.log("Guide Form Data:", JSON.parse(storedGuideFormData));
+      setGuideFormData(JSON.parse(storedGuideFormData));
     }
   }, []);
 
