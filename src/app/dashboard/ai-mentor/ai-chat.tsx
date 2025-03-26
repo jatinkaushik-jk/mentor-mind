@@ -4,11 +4,11 @@ import { useChat, type UseChatOptions } from "@ai-sdk/react";
 import { cn } from "@/lib/utils";
 import { Chat } from "@/components/ui/chat";
 
-type ChatDemoProps = {
+type AIChatProps = {
   initialMessages?: UseChatOptions["initialMessages"];
 };
 
-export const AIChat = (props: ChatDemoProps) => {
+export const AIChat = (props: AIChatProps) => {
   const {
     messages,
     input,
@@ -21,9 +21,6 @@ export const AIChat = (props: ChatDemoProps) => {
   } = useChat({
     ...props,
     api: "/api/chat",
-    body: {
-      model: "models/gemini-2.0-flash",
-    },
   });
 
   return (

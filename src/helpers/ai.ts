@@ -26,11 +26,11 @@ const model = genAI.getGenerativeModel({
 });
 
 const generationConfig = {
-  temperature: 1,
+  temperature: 0.8,
   topP: 0.95,
   topK: 40,
   maxOutputTokens: 8000,
-  responseMimeType: "text/plain",
+  responseMimeType: "application/json",
 };
 
 export async function runGemini(userInput: string) {
