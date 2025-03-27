@@ -6,6 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 import { ArrowRightCircle } from "lucide-react";
 import Link from "next/link";
 
@@ -18,11 +19,16 @@ interface SkillCardProps {
     futureScope: string;
   };
   redirectURL?: string;
+  className?: string;
 }
 
-const SkillCard: React.FC<SkillCardProps> = ({ cardData, redirectURL }) => {
+const SkillCard: React.FC<SkillCardProps> = ({
+  cardData,
+  redirectURL,
+  className,
+}) => {
   return (
-    <Card className="bg-white">
+    <Card className={cn(className)}>
       <CardHeader>
         <CardTitle className="font-bold text-lg">
           {cardData.skillName}

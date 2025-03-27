@@ -1,3 +1,4 @@
+"use client";
 import DashboardStats from "../components/statCard";
 import UserCard from "../components/userCard";
 import StreakCard from "../components/streakCard";
@@ -11,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import roadmap from "@/../public/roadmap-illustration.svg";
 import Link from "next/link";
+import { useUser } from "@clerk/nextjs";
 
 const footerData = [
   { title: "Community Members", stats: "36K" },
@@ -20,6 +22,7 @@ const footerData = [
 ];
 
 const Dashboard = () => {
+  const { user } = useUser();
   return (
     <div className="flex flex-col gap-4">
       <div className="flex flex-row gap-4 lg:flex-nowrap flex-wrap">
@@ -32,7 +35,9 @@ const Dashboard = () => {
         <StreakCard className="lg:col-span-3" />
       </div>
       <div>
-        <h3 className="font-bold text-2xl pl-2">Welcome back, Jatin!</h3>
+        <h3 className="font-bold text-2xl pl-2">
+          Welcome back, {user?.firstName || "user"}!
+        </h3>
       </div>
       <div className="flex flex-col lg:flex-row gap-4">
         <div className="w-full flex flex-col gap-4">

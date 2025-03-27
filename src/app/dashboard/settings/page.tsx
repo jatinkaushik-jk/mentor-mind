@@ -9,7 +9,7 @@ import axios from "axios";
 // import { CLerkProfilePage } from "./[[...rest]]/page";
 
 const Setting = () => {
-  const [userData, setUserData] = useState<GuideFormData | null >(null);
+  const [userData, setUserData] = useState<GuideFormData | null>(null);
 
   useEffect(() => {
     const storedGuideFormData = localStorage.getItem("guideFormData");
@@ -18,10 +18,9 @@ const Setting = () => {
     }
   }, []);
 
-  async function handleSaveData(){
+  async function handleSaveData() {
     // try {
     //   const response = await axios.post("/api/your-endpoint", { guideFormData: userData });
-  
     //   if (response.data.success) {
     //     console.log("Data saved successfully:", response.data);
     //   } else {
@@ -30,17 +29,10 @@ const Setting = () => {
     // } catch (error:any) {
     //   console.error("Error saving data:", error.response?.data || error.message);
     // }
-  
   }
 
   return (
     <div className="max-w-5xl mx-auto p-6 space-y-8 w-full">
-      {/* Profile Header */}
-      {/* <div className="text-center">
-        <h1 className="text-4xl font-bold text-gray-800">Profile Settings</h1>
-        <p className="text-gray-500">Manage your personal and career details</p>
-      </div> */}
-
       {/* Personal Info Section */}
       <div className="bg-white shadow-xl rounded-lg p-6">
         <div className="flex justify-between items-center border-b pb-3">
@@ -53,7 +45,10 @@ const Setting = () => {
         </div>
 
         {
-          <form className="flex flex-col gap-4 w-full pt-4" onSubmit={(e)=> e.preventDefault()}>
+          <form
+            className="flex flex-col gap-4 w-full pt-4"
+            onSubmit={(e) => e.preventDefault()}
+          >
             {/* Personal Info */}
             <div className="bg-gray-50 p-4 rounded-lg">
               <h3 className="text-lg font-semibold text-primary">
@@ -67,7 +62,7 @@ const Setting = () => {
                   type="text"
                   value={userData?.userProfile.fullName}
                   required
-                  disabled={userData? true: false}
+                  disabled={userData ? true : false}
                   className="w-full p-2 border border-gray-300 rounded"
                 />
                 <label className="block text-gray-600">
@@ -77,7 +72,7 @@ const Setting = () => {
                   type="email"
                   value={userData?.userProfile.email}
                   required
-                  disabled={userData? true: false}
+                  disabled={userData ? true : false}
                   className="w-full p-2 border border-gray-300 rounded"
                 />
                 <label className="block text-gray-600">
@@ -87,7 +82,7 @@ const Setting = () => {
                   type="text"
                   value={userData?.userProfile.ageGroup}
                   required
-                  disabled={userData? true: false}
+                  disabled={userData ? true : false}
                   className="w-full p-2 border border-gray-300 rounded"
                 />
                 <label className="block text-gray-600">
@@ -97,7 +92,7 @@ const Setting = () => {
                   type="text"
                   value={userData?.userProfile.educationLevel}
                   required
-                  disabled={userData? true: false}
+                  disabled={userData ? true : false}
                   className="w-full p-2 border border-gray-300 rounded"
                 />
               </div>
@@ -116,7 +111,7 @@ const Setting = () => {
                   type="text"
                   value={userData?.backgroundExperience.currentField}
                   required
-                  disabled={userData? true: false}
+                  disabled={userData ? true : false}
                   className="w-full p-2 border border-gray-300 rounded"
                 />
                 <label className="block text-gray-600">
@@ -126,7 +121,7 @@ const Setting = () => {
                   type="text"
                   value={userData?.backgroundExperience.currentSkills}
                   required
-                  disabled={userData? true: false}
+                  disabled={userData ? true : false}
                   className="w-full p-2 border border-gray-300 rounded"
                 />
                 <label className="block text-gray-600">
@@ -136,7 +131,7 @@ const Setting = () => {
                   type="text"
                   value={userData?.backgroundExperience.experience}
                   required
-                  disabled={userData? true: false}
+                  disabled={userData ? true : false}
                   className="w-full p-2 border border-gray-300 rounded"
                 />
               </div>
@@ -155,7 +150,7 @@ const Setting = () => {
                   type="text"
                   value={userData?.careerGoals.preferredCareerPath}
                   required
-                  disabled={userData? true: false}
+                  disabled={userData ? true : false}
                   className="w-full p-2 border border-gray-300 rounded"
                 />
                 <label className="block text-gray-600">
@@ -165,7 +160,7 @@ const Setting = () => {
                   type="text"
                   value={userData?.careerGoals.primaryLearningGoal}
                   required
-                  disabled={userData? true: false}
+                  disabled={userData ? true : false}
                   className="w-full p-2 border border-gray-300 rounded"
                 />
                 <label className="block text-gray-600">
@@ -175,13 +170,19 @@ const Setting = () => {
                   type="text"
                   value={userData?.careerGoals.learningPreference}
                   required
-                  disabled={userData? true: false}
+                  disabled={userData ? true : false}
                   className="w-full p-2 border border-gray-300 rounded"
                 />
               </div>
             </div>
             <div className="flex justify-end w-full my-4 px-2">
-            <Button disabled={userData?true:false} type="submit" onClick={handleSaveData}>Save</Button>
+              <Button
+                disabled={userData ? true : false}
+                type="submit"
+                onClick={handleSaveData}
+              >
+                Save
+              </Button>
             </div>
           </form>
         }

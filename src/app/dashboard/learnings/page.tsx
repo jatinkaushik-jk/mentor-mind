@@ -113,7 +113,7 @@ export default function Learnings() {
             onClick={() => setSelectedSkill(cardData.skillName)}
             className="hover:shadow-xl rounded-xl shadow-teal-100"
           >
-            <SkillCard cardData={cardData} />
+            <SkillCard cardData={cardData} className="bg-white" />
           </div>
         ))}
       </div>

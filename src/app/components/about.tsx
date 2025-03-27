@@ -6,12 +6,9 @@ const AboutSection = () => {
   return (
     <div
       id="about"
-      className="flex flex-col lg:flex-row justify-evenly items-center gap-4 gap-y-20 sm:gap-y-24 my-36 md:my-52"
+      className="flex flex-col lg:flex-row justify-evenly items-center gap-4 gap-y-20 sm:gap-y-24 mt-12 my-36 md:my-52"
     >
       <div className="about-left">
-        {/* <div className="relative rounded-md w-[225px] sm:w-[300px] aspect-3/4 bg-amber-300">
-          <div className="absolute w-full h-full bg-amber-600 rounded-md sm:top-8 top-4 right-4 sm:right-8 -z-10"></div>
-        </div> */}
         <Image src={aboutImage} alt="about-image" className="h-500px w-20px" />
       </div>
       <div className="about-right lg:w-[45%] w-5/6">
