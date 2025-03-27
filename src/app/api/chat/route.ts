@@ -1,5 +1,23 @@
-import { google } from "@ai-sdk/google";
-import { streamText } from "ai";
+import { AI_MENTOR_GUIDELINES } from "@/helpers/systemInstructions";
+import { createGoogleGenerativeAI } from "@ai-sdk/google";
+import { generateId, Message, streamText } from "ai";
+
+const google = createGoogleGenerativeAI({
+  apiKey: process.env.GEMINI_API_KEY || "",
+});
+
+const buildGoogleGenAIPrompt = (messages: Message[]): Message[] => [
+  {
+    id: generateId(),
+    role: "user",
+    content: AI_MENTOR_GUIDELINES,
+  },
+  ...messages.map((message) => ({
+    id: message.id || generateId(),
+    role: message.role,
+    content: message.content,
+  })),
+];
 
 // Allow streaming responses up to 30 seconds
 export const maxDuration = 30;
@@ -7,11 +25,12 @@ export const maxDuration = 30;
 export async function POST(req: Request) {
   const { messages } = await req.json();
 
-  const result = streamText({
-    model: google("models/gemini-2.0-flash"),
-    messages,
+  const result = await streamText({
+    model: google("gemini-2.0-flash-001"),
+    messages: buildGoogleGenAIPrompt(messages),
+    temperature: 0.8,
+    // system: "",
   });
-  console.log(result.toDataStreamResponse());
 
-  return result.toDataStreamResponse();
+  return result?.toDataStreamResponse();
 }

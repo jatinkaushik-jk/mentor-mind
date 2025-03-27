@@ -14,26 +14,26 @@ import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
 
 const monthlyData = [
-  { name: "Jan", hours: 12 },
-  { name: "Feb", hours: 18 },
-  { name: "Mar", hours: 22 },
-  { name: "Apr", hours: 15 },
-  { name: "May", hours: 25 },
-  { name: "Jun", hours: 30 },
-  { name: "Jul", hours: 28 },
-  { name: "Aug", hours: 35 },
-  { name: "Sep", hours: 20 },
-  { name: "Oct", hours: 40 },
-  { name: "Nov", hours: 38 },
-  { name: "Dec", hours: 45 },
+  { name: "Jan", hours: 0 },
+  { name: "Feb", hours: 0 },
+  { name: "Mar", hours: 0 },
+  { name: "Apr", hours: 0 },
+  { name: "May", hours: 0 },
+  { name: "Jun", hours: 0 },
+  { name: "Jul", hours: 0 },
+  { name: "Aug", hours: 0 },
+  { name: "Sep", hours: 0 },
+  { name: "Oct", hours: 0 },
+  { name: "Nov", hours: 0 },
+  { name: "Dec", hours: 0 },
 ];
 
 const yearlyData = [
-  { name: "2020", hours: 150 },
-  { name: "2021", hours: 180 },
-  { name: "2022", hours: 220 },
-  { name: "2023", hours: 250 },
-  { name: "2024", hours: 280 },
+  { name: "2020", hours: 0 },
+  { name: "2021", hours: 0 },
+  { name: "2022", hours: 0 },
+  { name: "2023", hours: 0 },
+  { name: "2024", hours: 0 },
 ];
 
 export default function LearningActivityChart() {

@@ -8,7 +8,6 @@ import { Badge } from "@/components/ui/badge";
 import { BadgeCheck } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { SignInButton } from "@clerk/nextjs";
 import axios from "axios";
 import Link from "next/link";
 

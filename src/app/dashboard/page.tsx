@@ -24,8 +24,8 @@ const Dashboard = () => {
     <div className="flex flex-col gap-4">
       <div className="flex flex-row gap-4 lg:flex-nowrap flex-wrap">
         <UserCard
-          role={"FullStack Developer"}
-          skills={["react", "figma"]}
+          role={"Student"}
+          skills={["skill01", "skill02"]}
           className="lg:col-span-3"
         ></UserCard>
         <DashboardStats className="lg:col-span-6 lg:min-w-lg" />

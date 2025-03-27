@@ -11,7 +11,7 @@ export default function StreakCard({ className }: { className?: string }) {
           size={60}
         />
         <div className="flex-col flex items-center justify-center gap-2">
-          <h1 className="text-xl font-bold">7 Day Streak</h1>
+          <h1 className="text-xl font-bold">0 Day Streak</h1>
           <p className="text-sm text-gray-600">Keep your momentum going!</p>
         </div>
       </CardContent>
