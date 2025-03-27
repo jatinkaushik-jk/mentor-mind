@@ -134,7 +134,7 @@ const Setting = () => {
                 </label>
                 <Input
                   type="text"
-                  value={userData?.backgroundExperience.experience}
+                  value={userData?.backgroundExperience.experience
                   required
                   disabled={userData? true: false}
                   className="w-full p-2 border border-gray-300 rounded"
