@@ -34,7 +34,7 @@ export default function Guide() {
   });
 
   useEffect(() => {
-    const storedGuideFormData = localStorage.getItem("GuideFormData");
+    const storedGuideFormData = localStorage.getItem("guideFormData");
     if (storedGuideFormData) {
       setGuideFormData(JSON.parse(storedGuideFormData));
     }
@@ -120,7 +120,7 @@ export default function Guide() {
       if (newProgress === progress.length) {
         const formData = { ...guideFormData };
         setGuideFormData(formData);
-        localStorage.setItem("GuideFormData", JSON.stringify(formData));
+        localStorage.setItem("guideFormData", JSON.stringify(formData));
       }
     }
   };

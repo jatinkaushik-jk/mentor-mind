@@ -43,14 +43,6 @@ const Recommendation: React.FC = () => {
     }
   }
 
-  useEffect(() => {
-    if (context) {
-      const { guideFormData } = context;
-      if (typeof window !== "undefined") {
-        localStorage.setItem("guideFormData", JSON.stringify(guideFormData));
-      }
-    }
-  }, [context, router]);
   const { guideFormData } = context;
 
   useEffect(() => {
