@@ -21,14 +21,14 @@ export default function Career() {
 
   const { guideFormData, setGuideFormData } = context;
 
-  const handleChange = (field: string, value: string) => {
+  const handleCareersOptionChange = (name: string, value: string) => {
     setGuideFormData((prevData) => ({
       ...prevData,
-      careerGoals: { ...prevData.careerGoals, [field]: value },
+      careerGoals: { ...prevData.careerGoals, [name]: value },
     }));
   };
 
-  const Options = [
+  const CareersOptions = [
     {
       id: "preferredCareerPath",
       label: "Prefer Career Path",
@@ -67,14 +67,16 @@ export default function Career() {
     <div className="flex flex-col gap-3">
       <h1 className="text-2xl font-semibold text-primary mb-2">Career Goals</h1>
 
-      {Options.map(({ id, label, options }) => (
+      {CareersOptions.map(({ id, label, options }, index) => (
         <div key={id} className="w-full mb-2">
           <Label className="ml-1 mb-1.5" htmlFor={id}>
             {label}
           </Label>
           <Select
-            onValueChange={(value) => handleChange(id, value)}
-            defaultValue={guideFormData.careerGoals[id] || ""}
+            onValueChange={(value) => handleCareersOptionChange(id, value)}
+            defaultValue={
+              Object.values(guideFormData?.careerGoals)[index] || ""
+            }
             required={true}
           >
             <SelectTrigger className="w-full">

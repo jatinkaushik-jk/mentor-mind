@@ -102,7 +102,7 @@ const Info: React.FC = () => {
         <Input
           onChange={handleChange}
           autoComplete="off"
-          value={guideFormData.userProfile.fullName}
+          value={guideFormData?.userProfile?.fullName || ""}
           name="fullName"
           type="text"
           placeholder="your name"
@@ -117,7 +117,7 @@ const Info: React.FC = () => {
         <Input
           onChange={handleChange}
           autoComplete="off"
-          value={guideFormData.userProfile.email}
+          value={guideFormData?.userProfile?.email || ""}
           name="email"
           type="email"
           required={true}
@@ -128,14 +128,14 @@ const Info: React.FC = () => {
         "Age Group",
         "ageGroup",
         ["16-20", "21-25", "26+"],
-        guideFormData.userProfile.ageGroup,
+        guideFormData?.userProfile?.ageGroup || "",
         handleAgeChange
       )}
       {showSelect(
         "Current Education",
         "educationLevel",
         educationOptions,
-        guideFormData.userProfile.educationLevel,
+        guideFormData?.userProfile?.educationLevel || "",
         handleEducationChange
       )}
     </div>

@@ -52,7 +52,7 @@ const Experience: React.FC = () => {
         </Label>
         <Select
           onValueChange={(value) => handleChange("currentField", value)}
-          defaultValue={guideFormData.backgroundExperience.currentField || ""}
+          defaultValue={guideFormData?.backgroundExperience?.currentField || ""}
           name="currentField"
           required={true}
         >
@@ -79,7 +79,7 @@ const Experience: React.FC = () => {
           type="text"
           name="currentSkills"
           placeholder="Javascript, Python, Figma, etc."
-          value={guideFormData.backgroundExperience.currentSkills || ""}
+          value={guideFormData?.backgroundExperience?.currentSkills || ""}
           onChange={(e) => handleChange("currentSkills", e.target.value)}
           maxLength={100}
           required={true}
@@ -92,7 +92,7 @@ const Experience: React.FC = () => {
         </Label>
         <Select
           onValueChange={(value) => handleChange("experience", value)}
-          defaultValue={guideFormData.backgroundExperience.experience || ""}
+          defaultValue={guideFormData?.backgroundExperience?.experience || ""}
           required={true}
           name="experience"
         >

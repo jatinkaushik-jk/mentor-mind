@@ -77,7 +77,7 @@ interface ToolResult {
   toolName: string;
   result: {
     __cancelled?: boolean;
-    [key: string]: any;
+    [key: string]: string | number | boolean | object | null | undefined;
   };
 }
 
@@ -103,7 +103,11 @@ interface SourcePart {
   type: "source";
 }
 
-type MessagePart = TextPart | ReasoningPart | ToolInvocationPart | SourcePart;
+export type MessagePart =
+  | TextPart
+  | ReasoningPart
+  | ToolInvocationPart
+  | SourcePart;
 
 export interface Message {
   id: string;
