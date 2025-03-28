@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useContext, useState } from "react";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import { ProgressContext } from "../../Context/ProgressContext";
 import SkillCard from "@/app/components/skillCard";
 import { Badge } from "@/components/ui/badge";
@@ -22,7 +22,7 @@ interface SkillsRecommendations {
 const Recommendation: React.FC = () => {
   const context = useContext(ProgressContext);
   const [isloading, setIsLoading] = useState<boolean>(false);
-  const router = useRouter();
+  // const router = useRouter();
   const [skillCards, setSkillCards] = React.useState<SkillsRecommendations[]>(
     []
   );
@@ -114,7 +114,7 @@ const Recommendation: React.FC = () => {
                   <div key={index}>
                     <ul>
                       {Object.values(data).map((item, index) => (
-                        <li key={index}>{item || "N/A"}</li>
+                        <li key={index}>{(item as string) || "N/A"}</li>
                       ))}
                     </ul>
                   </div>

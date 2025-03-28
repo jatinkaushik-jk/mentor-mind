@@ -1,12 +1,9 @@
 "use client";
 
-import React, { useContext, useEffect, useState } from "react";
-import Link from "next/link";
+import React, { useEffect, useState } from "react";
 import { Input } from "@/components/ui/guideInput";
 import { Button } from "@/components/ui/button";
 import { GuideFormData } from "@/app/Context/ProgressContext";
-import axios from "axios";
-// import { CLerkProfilePage } from "./[[...rest]]/page";
 
 const Setting = () => {
   const [userData, setUserData] = useState<GuideFormData | null>(null);

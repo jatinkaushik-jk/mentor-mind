@@ -33,7 +33,7 @@ interface ChatPropsBase {
     messageId: string,
     rating: "thumbs-up" | "thumbs-down"
   ) => void;
-  setMessages?: (messages: any[]) => void;
+  setMessages?: (messages: Message[]) => void;
   transcribeAudio?: (blob: Blob) => Promise<string>;
 }
 
@@ -305,7 +305,7 @@ interface ChatFormProps {
 }
 
 export const ChatForm = forwardRef<HTMLFormElement, ChatFormProps>(
-  ({ children, handleSubmit, isPending, className }, ref) => {
+  ({ children, handleSubmit, className }, ref) => {
     const [files, setFiles] = useState<File[] | null>(null);
 
     const onSubmit = (event: React.FormEvent) => {

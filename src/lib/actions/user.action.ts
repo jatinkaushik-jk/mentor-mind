@@ -1,6 +1,6 @@
 "use server";
 
-import User from "@/lib/models/user.modal";
+import User, { IUser } from "@/lib/models/user.modal";
 import { auth } from "@clerk/nextjs/server";
 import { connectDB } from "../db/db";
 
@@ -23,7 +23,7 @@ export const getUser = async () => {
 };
 
 // ✅ Create a new user (only if needed)
-export const createUser = async (userData: any) => {
+export const createUser = async (userData: IUser) => {
   await connectDB();
 
   try {

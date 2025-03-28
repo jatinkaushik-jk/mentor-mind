@@ -1,46 +1,17 @@
-import mongoose, { Mongoose } from "mongoose";
+import mongoose from "mongoose";
 
-const MONGODB_URL = process.env.MONGODB_URI || process.env.MONGODB_URL;
-
-if (!MONGODB_URL) {
-  throw new Error("MongoDB connection string is not defined in environment variables");
-}
-
-interface MongooseConn {
-  conn: Mongoose | null;
-  promise: Promise<Mongoose> | null;
-}
-
-let cached: MongooseConn = (global as any).mongoose;
-
-if (!cached) {
-  cached = (global as any).mongoose = {
-    conn: null,
-    promise: null,
-  };
-}
-
-export const connectDB = async () => {
-  if (cached.conn) {
-    console.log("MongoDB connected successfully ✅"); // Debugging log
-    return cached.conn;
-  }
-
+export async function connectDB() {
   try {
-    cached.promise =
-      cached.promise ||
-      mongoose.connect(MONGODB_URL, {
-        dbName: "Mentor_mind",
-        bufferCommands: false,
-        connectTimeoutMS: 30000,
-      });
-
-    cached.conn = await cached.promise;
-    console.log("New MongoDB connection established"); // Debugging log
-
-    return cached.conn;
+    mongoose.connect(process.env.MONGODB_URI!); // Exclamation restricts typesafety and ensure varaible's valid presence
+    const connection = mongoose.connection;
+    connection.on("connected", () => {
+      console.log("MongoDB Connected");
+    });
+    connection.on("error", (err) => {
+      console.log("Error in connecting MongoDB ", err);
+      process.exit(0);
+    });
   } catch (error) {
-    console.error("Error connecting to MongoDB:", error); // Debugging log
-    throw new Error("Failed to connect to MongoDB");
+    console.log("Error Ocuured in connecting Database ", error);
   }
-};
+}

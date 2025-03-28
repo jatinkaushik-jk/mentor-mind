@@ -1,9 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { BookOpen } from "lucide-react";
 import SkillCard from "@/app/components/skillCard";
 import StreakCard from "@/app/components/streakCard";
 import SkillJourneyCard from "@/app/components/skillJourney";

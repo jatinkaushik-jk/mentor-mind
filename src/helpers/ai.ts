@@ -25,13 +25,13 @@ const model = genAI.getGenerativeModel({
   safetySettings: safetySettings,
 });
 
-const generationConfig = {
-  temperature: 0.8,
-  topP: 0.95,
-  topK: 40,
-  maxOutputTokens: 8000,
-  responseMimeType: "application/json",
-};
+// const generationConfig = {
+//   temperature: 0.8,
+//   topP: 0.95,
+//   topK: 40,
+//   maxOutputTokens: 8000,
+//   responseMimeType: "application/json",
+// };
 
 export async function runGemini(userInput: string) {
   // const chatSession = model.startChat({

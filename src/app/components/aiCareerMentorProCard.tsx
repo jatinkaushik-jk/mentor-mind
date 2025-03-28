@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Rocket, Star } from "lucide-react";
+import { Rocket } from "lucide-react";
 
 export default function AICareerMentorCard() {
   return (

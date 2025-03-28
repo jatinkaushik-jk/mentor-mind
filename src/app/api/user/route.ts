@@ -1,6 +1,6 @@
 import { connectDB } from "@/lib/db/db";
 import User from "@/lib/models/user.modal";
-import { auth, currentUser } from "@clerk/nextjs/server";
+import { auth } from "@clerk/nextjs/server";
 import { NextResponse, NextRequest } from "next/server";
 
 // export async function GET() {

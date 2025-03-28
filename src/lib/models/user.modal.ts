@@ -1,4 +1,15 @@
 import { Schema, model, models } from "mongoose";
+import { Document } from "mongoose";
+
+export interface IUser extends Document {
+  clerkId: string;
+  email: string;
+  username: string;
+  photo: string;
+  firstName?: string;
+  lastName?: string;
+  guideFormData?: Record<string, object | string>; // Flexible object for storing guide form data
+}
 
 const UserSchema = new Schema({
   clerkId: {
