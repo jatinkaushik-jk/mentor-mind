@@ -39,9 +39,6 @@ const Setting = () => {
           <h2 className="text-2xl font-semibold text-primary">
             Profile Details
           </h2>
-          {/* <Link href="/guide-me" className="text-blue-600 hover:underline">
-            Want to edit?
-          </Link> */}
         </div>
 
         {

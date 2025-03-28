@@ -77,13 +77,12 @@
 
 ## **Tech Stack**
 
-- **Frontend:** Next.js (React.js), Tailwind CSS
+- **Frontend:** Next.js (React.js), Tailwind CSS, Shadcn UI
 - **Backend:** Node.js, Express.js, API Routes
-- **Database:** MongoDB/PostgreSQL
+- **Database:** MongoDB
 - **Authentication:** Clerk
-- **AI Services:** OpenAI/GPT for AI Mentor Chat
-- **Hosting & Deployment:** Vercel (Frontend), AWS/GCP (Backend)
-- **Monitoring & Analytics:** LogRocket, Sentry, Datadog
+- **AI Services:** Gemini for AI Mentor Chat and Skills Recommendations
+- **Hosting & Deployment:** Vercel, MongoDB Atlas
 
 ---
 
@@ -102,7 +101,7 @@
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/yourusername/mentor-mind.git
+   git clone https://github.com/jatinkaushik-jk/mentor-mind.git
    cd mentor-mind
    ```
 2. Install dependencies:
@@ -113,8 +112,8 @@
    ```sh
    NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_key
    CLERK_SECRET_KEY=your_clerk_secret
-   DATABASE_URL=your_database_url
-   AI_API_KEY=your_openai_key
+   MONGODB_URI=your_mongodb_url
+   GEMINI_API_KEY=your_gemini_api_key
    ```
 4. Start the development server:
    ```sh
@@ -144,4 +143,3 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## **Contact & Support**
 
 For questions, feature requests, or support, open an issue on GitHub.
-
