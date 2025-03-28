@@ -50,4 +50,26 @@ export interface ProgressContextType {
   // setFinalData: Dispatch<SetStateAction<FinalData | null>>;
 }
 
-export const ProgressContext = createContext<ProgressContextType>({});
+export const ProgressContext = createContext<ProgressContextType>({
+  currentProgress: 0,
+  setCurrentProgress: () => {},
+  guideFormData: {
+    userProfile: {
+      fullName: "",
+      email: "",
+      ageGroup: "",
+      educationLevel: "",
+    },
+    backgroundExperience: {
+      currentField: "",
+      currentSkills: "",
+      experience: "",
+    },
+    careerGoals: {
+      preferredCareerPath: "",
+      primaryLearningGoal: "",
+      learningPreference: "",
+    },
+  },
+  setGuideFormData: () => {},
+});
