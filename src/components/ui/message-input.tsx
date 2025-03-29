@@ -161,7 +161,7 @@ export function MessageInput({
     onKeyDownProp?.(event);
   };
 
-  const textAreaRef = useRef<HTMLTextAreaElement>(null);
+  const textAreaRef = useRef<HTMLTextAreaElement | null>(null);
   const [textAreaHeight, setTextAreaHeight] = useState<number>(0);
 
   useEffect(() => {

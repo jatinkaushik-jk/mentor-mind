@@ -117,7 +117,7 @@ const CodeBlock = ({
   );
 };
 
-function childrenTakeAllStringContents(element: React.ReactElement): string {
+function childrenTakeAllStringContents(element: any): string {
   if (typeof element === "string") {
     return element;
   }
