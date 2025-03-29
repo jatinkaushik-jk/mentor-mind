@@ -97,9 +97,9 @@ export default function Learnings() {
       <h1 className="text-2xl font-bold text-primary mb-4">Learnings</h1>
 
       {/* Skill Progress Tracker */}
-      <div className="grid grid-cols-4 gap-4">
-        <SkillJourneyCard className="col-span-3" />
-        <StreakCard className="col-span-1" />
+      <div className="grid md:grid-cols-4 gap-4">
+        <SkillJourneyCard className="md:col-span-3" />
+        <StreakCard className="md:col-span-1" />
       </div>
 
       {/* Trending Skills Section */}

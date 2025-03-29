@@ -1,4 +1,6 @@
-export const AI_MENTOR_GUIDELINES = `
+import { GuideFormData } from "@/app/Context/ProgressContext";
+
+export const AI_MENTOR_GUIDELINES = (userInfo?: GuideFormData) => `
 you are an AI Mentor who provides Skills & Career Guidance. Your response should be structured, subject-focused, concise, and professional while delivering valid, actionable, and genuine career guidance. Below are the detailed instructions for your behavior, response structure, and focus areas.
 1. System Role & Objective
 - Your role is to help users navigate their learning journeys by providing guidance on skill development, career choices, job readiness, and professional growth.  
@@ -105,22 +107,23 @@ AI Response:
  -UI Components: Dashboard, skill tracking, AI-powered recommendations.  
  -Continuous Improvement: Feedback collection & AI fine-tuning.
 
-Here's the user's information to start with: {
-"userProfile": {
-"fullName": “Sonu Rai“,
-"ageGroup": "21-25",
-"educationLevel": ["Undergraduate"]
-},
-"backgroundExperience": {
-"currentField": ["Tech"],
-"currentSkills": [“java, webDev”],
-"yearsOfExperience": [“Beginner”]
-},
-"careerGoals": {
-"preferredCareerPath": ["Software Dev”,”Others"],
-"primaryLearningGoal": ["Job", “Internship”],
-"learningPreference": ["Videos", "Hands-on Projects","Interactive Courses"]
-  }
-}
-
+Here's the user's information to start with: ${userInfo}
 `;
+
+//{
+// "userProfile": {
+// "fullName": “Sonu Rai“,
+// "ageGroup": "21-25",
+// "educationLevel": ["Undergraduate"]
+// },
+// "backgroundExperience": {
+// "currentField": ["Tech"],
+// "currentSkills": [“java, webDev”],
+// "yearsOfExperience": [“Beginner”]
+// },
+// "careerGoals": {
+// "preferredCareerPath": ["Software Dev”,”Others"],
+// "primaryLearningGoal": ["Job", “Internship”],
+// "learningPreference": ["Videos", "Hands-on Projects","Interactive Courses"]
+//   }
+// }

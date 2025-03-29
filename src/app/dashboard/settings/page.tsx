@@ -198,9 +198,16 @@ const Setting = () => {
         defaultValue={value || ""}
         required={true}
         name={name}
+        disabled={userData?.isDataExist ? true : false}
       >
         <SelectTrigger className="w-full">
-          <SelectValue placeholder={`Select ${label}`} />
+          <SelectValue
+            placeholder={
+              userData?.isDataExist
+                ? userData?.userProfile?.[name]
+                : `Select ${label}`
+            }
+          />
         </SelectTrigger>
         <SelectContent>
           <SelectGroup>
@@ -249,6 +256,7 @@ const Setting = () => {
                     placeholder="your name"
                     required={true}
                     minLength={3}
+                    disabled={userData?.isDataExist ? true : false}
                   />
                 </div>
                 <div className="w-full mb-2 flex-1">
@@ -262,6 +270,7 @@ const Setting = () => {
                     name="email"
                     type="email"
                     required={true}
+                    disabled={userData?.isDataExist ? true : false}
                     placeholder="example@email.in"
                   />
                 </div>
@@ -307,9 +316,16 @@ const Setting = () => {
                     }
                     name="currentField"
                     required={true}
+                    disabled={userData?.isDataExist ? true : false}
                   >
                     <SelectTrigger className="w-full">
-                      <SelectValue placeholder="Select your field" />
+                      <SelectValue
+                        placeholder={
+                          userData?.isDataExist
+                            ? userData?.backgroundExperience.currentField
+                            : "Select your field"
+                        }
+                      />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectGroup>
@@ -335,6 +351,7 @@ const Setting = () => {
                     onChange={handleExperienceInputChange}
                     maxLength={100}
                     required={true}
+                    disabled={userData?.isDataExist ? true : false}
                     className="w-full border-2 border-gray-300 p-2 rounded-lg focus:outline-none focus:border-primary"
                   />
                 </div>
@@ -350,10 +367,17 @@ const Setting = () => {
                       userData?.backgroundExperience?.experience || ""
                     }
                     required={true}
+                    disabled={userData?.isDataExist ? true : false}
                     name="experience"
                   >
                     <SelectTrigger className="w-full">
-                      <SelectValue placeholder="Select your experience level" />
+                      <SelectValue
+                        placeholder={
+                          userData?.isDataExist
+                            ? userData?.backgroundExperience.experience
+                            : "Select your experience level"
+                        }
+                      />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectGroup>
@@ -388,10 +412,15 @@ const Setting = () => {
                         Object.values(userData?.careerGoals)[index] || ""
                       }
                       required={true}
+                      disabled={userData?.isDataExist ? true : false}
                     >
                       <SelectTrigger className="w-full">
                         <SelectValue
-                          placeholder={`Select ${label.toLowerCase()}`}
+                          placeholder={
+                            userData?.isDataExist
+                              ? userData?.careerGoals?.[id]
+                              : `Select ${label.toLowerCase()}`
+                          }
                         />
                       </SelectTrigger>
                       <SelectContent>

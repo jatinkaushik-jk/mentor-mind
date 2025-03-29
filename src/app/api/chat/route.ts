@@ -10,7 +10,7 @@ const buildGoogleGenAIPrompt = (messages: Message[]): Message[] => [
   {
     id: generateId(),
     role: "user",
-    content: AI_MENTOR_GUIDELINES,
+    content: AI_MENTOR_GUIDELINES(),
   },
   ...messages.map((message) => ({
     id: message.id || generateId(),
