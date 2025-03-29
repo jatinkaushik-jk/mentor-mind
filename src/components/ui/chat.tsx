@@ -12,7 +12,7 @@ import { ArrowDown, ThumbsDown, ThumbsUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useAutoScroll } from "@/hooks/use-auto-scroll";
 import { Button } from "@/components/ui/button";
-import { MessagePart, type Message } from "@/components/ui/chat-message";
+import { type Message } from "@/components/ui/chat-message";
 import { CopyButton } from "@/components/ui/copy-button";
 import { MessageInput } from "@/components/ui/message-input";
 import { MessageList } from "@/components/ui/message-list";
@@ -113,29 +113,27 @@ export function Chat({
     }
 
     if (lastAssistantMessage.parts && lastAssistantMessage.parts.length > 0) {
-      const updatedParts = lastAssistantMessage.parts.map(
-        (part: MessagePart) => {
-          if (
-            part.type === "tool-invocation" &&
-            part.toolInvocation &&
-            part.toolInvocation.state === "call"
-          ) {
-            needsUpdate = true;
-            return {
-              ...part,
-              toolInvocation: {
-                ...part.toolInvocation,
-                state: "result",
-                result: {
-                  content: "Tool execution was cancelled",
-                  __cancelled: true,
-                },
+      const updatedParts = lastAssistantMessage.parts.map((part: any) => {
+        if (
+          part.type === "tool-invocation" &&
+          part.toolInvocation &&
+          part.toolInvocation.state === "call"
+        ) {
+          needsUpdate = true;
+          return {
+            ...part,
+            toolInvocation: {
+              ...part.toolInvocation,
+              state: "result",
+              result: {
+                content: "Tool execution was cancelled",
+                __cancelled: true,
               },
-            };
-          }
-          return part;
+            },
+          };
         }
-      );
+        return part;
+      });
 
       if (needsUpdate) {
         updatedMessage = {
