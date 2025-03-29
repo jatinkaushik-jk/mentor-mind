@@ -7,6 +7,7 @@ import {
   Youtube,
 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -25,10 +26,18 @@ const Footer = () => {
         </div>
         <div className="fLinks flex lg:flex-row flex-wrap flex-col gap-y-6">
           <ul className="grid sm:grid-cols-2  space-y-2 lg:pr-8">
-            <li>Home</li>
-            <li>About</li>
-            <li>Features</li>
-            <li>Getting Started</li>
+            <li>
+              <Link href={"#home"}>Home</Link>
+            </li>
+            <li>
+              <Link href={"#about"}>About</Link>
+            </li>
+            <li>
+              <Link href={"#features"}>Features</Link>
+            </li>
+            <li>
+              <Link href={"#getting-started"}>Getting Started</Link>
+            </li>
           </ul>
           <ul className="grid sm:grid-cols-3 lg:border-l-2 lg:pl-8 space-y-2 space-x-4">
             <li>Careers</li>

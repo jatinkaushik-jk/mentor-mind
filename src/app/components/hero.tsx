@@ -33,7 +33,14 @@ export const HeroSection = () => {
             <Link href="/guide-me">Get Started</Link>
           </Button>
           <Button variant="ghost">
-            <Link href="/">Explore</Link>
+            <Link
+              href="https://github.com/jatinkaushik-jk/mentor-mind"
+              target="_blank"
+              rel="noopener noreferrer"
+              referrerPolicy="no-referrer"
+            >
+              Explore
+            </Link>
           </Button>
         </div>
       </div>
