@@ -1,6 +1,6 @@
 "use server";
 
-import User, { IUser } from "@/lib/models/user.modal";
+import User, { IUser } from "@/lib/models/user.model";
 import { auth } from "@clerk/nextjs/server";
 import { connectDB } from "../db/db";
 
