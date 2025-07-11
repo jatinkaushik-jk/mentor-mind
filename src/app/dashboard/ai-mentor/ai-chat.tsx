@@ -3,6 +3,7 @@ import { useChat, type UseChatOptions } from "@ai-sdk/react";
 
 import { cn } from "@/lib/utils";
 import { Chat } from "@/components/ui/chat";
+import { Message } from "@/components/ui/chat-message";
 
 type AIChatProps = {
   initialMessages?: UseChatOptions["initialMessages"];
@@ -27,14 +28,14 @@ export const AIChat = (props: AIChatProps) => {
     <div className={cn("flex", "flex-col", "h-[calc(100svh-100px)]", "w-full")}>
       <Chat
         className="grow"
-        messages={messages}
+        messages={messages as Message[]}
         handleSubmit={handleSubmit}
         input={input}
         handleInputChange={handleInputChange}
         isGenerating={isLoading}
         stop={stop}
         append={append}
-        setMessages={setMessages}
+        setMessages={setMessages as (messages: Message[] | ((messages: Message[]) => Message[])) => void}
         suggestions={[
           "What are the best career paths for me?",
           "What are the most in-demand skills for high-paying remote jobs, and how can I learn them efficiently?",

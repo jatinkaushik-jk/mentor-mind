@@ -12,7 +12,7 @@ import { ArrowDown, ThumbsDown, ThumbsUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useAutoScroll } from "@/hooks/use-auto-scroll";
 import { Button } from "@/components/ui/button";
-import { type Message } from "@/components/ui/chat-message";
+import { MessagePart, type Message } from "@/components/ui/chat-message";
 import { CopyButton } from "@/components/ui/copy-button";
 import { MessageInput } from "@/components/ui/message-input";
 import { MessageList } from "@/components/ui/message-list";
@@ -113,7 +113,7 @@ export function Chat({
     }
 
     if (lastAssistantMessage.parts && lastAssistantMessage.parts.length > 0) {
-      const updatedParts = lastAssistantMessage.parts.map((part: any) => {
+      const updatedParts = lastAssistantMessage.parts.map((part: MessagePart) => {
         if (
           part.type === "tool-invocation" &&
           part.toolInvocation &&
@@ -138,7 +138,7 @@ export function Chat({
       if (needsUpdate) {
         updatedMessage = {
           ...updatedMessage,
-          parts: updatedParts,
+          parts: updatedParts as MessagePart[],
         };
       }
     }

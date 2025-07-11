@@ -12,6 +12,7 @@ import {
   SelectValue,
   SelectItem,
 } from "@/components/ui/select";
+import { useUser } from "@clerk/nextjs";
 
 type SettingsFormData = {
   isDataExist: boolean;
@@ -54,6 +55,7 @@ const Setting = () => {
     },
   });
   const [isFormFilled, setIsFormFilled] = useState<boolean>(false);
+  const { isSignedIn, user } = useUser();
 
   useEffect(() => {
     const storedGuideFormData = localStorage.getItem("guideFormData");
@@ -204,7 +206,7 @@ const Setting = () => {
           <SelectValue
             placeholder={
               userData?.isDataExist
-                ? userData?.userProfile?.[name]
+                ? userData?.userProfile?.fullName
                 : `Select ${label}`
             }
           />
@@ -250,13 +252,13 @@ const Setting = () => {
                   <Input
                     onChange={handlePersonalInputChange}
                     autoComplete="off"
-                    value={userData?.userProfile?.fullName || ""}
+                    value={(isSignedIn && user?.fullName) || userData?.userProfile?.fullName || ""}
                     name="fullName"
                     type="text"
                     placeholder="your name"
                     required={true}
                     minLength={3}
-                    disabled={userData?.isDataExist ? true : false}
+                    disabled={isSignedIn && user?.fullName ? true : false}
                   />
                 </div>
                 <div className="w-full mb-2 flex-1">
@@ -266,11 +268,11 @@ const Setting = () => {
                   <Input
                     onChange={handlePersonalInputChange}
                     autoComplete="off"
-                    value={userData?.userProfile?.email || ""}
+                    value={(isSignedIn && user?.emailAddresses[0].emailAddress) || userData?.userProfile?.email || ""}
                     name="email"
                     type="email"
                     required={true}
-                    disabled={userData?.isDataExist ? true : false}
+                    disabled={(isSignedIn && user?.emailAddresses[0].emailAddress) ? true : false}
                     placeholder="example@email.in"
                   />
                 </div>
@@ -418,7 +420,7 @@ const Setting = () => {
                         <SelectValue
                           placeholder={
                             userData?.isDataExist
-                              ? userData?.careerGoals?.[id]
+                              ? Object.values(userData?.careerGoals)[index]
                               : `Select ${label.toLowerCase()}`
                           }
                         />
