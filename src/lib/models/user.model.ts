@@ -39,8 +39,11 @@ export interface IUser extends Document {
   selectedSkill: Skill;
   completedSkillsCount: number;
   attendedWorkshopsCount: number;
-  lastLogin: Date;
-  loginStreak: number;
+  lastLogin: Date | null;
+  loginStreak: {
+    currentStreak: number;
+    highestStreak: number;
+  };
 }
 
 const UserBackgroundDataSchema = new Schema({
@@ -106,8 +109,14 @@ const UserSchema = new Schema({
     default: Date.now,
   },
   loginStreak: {
-    type: Number,
-    default: 1,
+    currentStreak: {
+      type: Number,
+      default: 1,
+    },
+    highestStreak: {
+      type: Number,
+      default: 1,
+    },
   },
 });
 

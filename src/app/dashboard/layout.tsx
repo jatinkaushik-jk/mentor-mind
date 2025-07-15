@@ -17,6 +17,7 @@ import {
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Stars } from "lucide-react";
+import { useEffect } from "react";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const path = usePathname();
@@ -24,6 +25,22 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     .split("/")
     .filter((segment) => segment)
     .slice(1);
+
+    useEffect(()=>{
+      const updateStreak = async () => {
+        try{
+          await fetch("/api/user-streak", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+        } catch (error) {
+          console.error("Error updating streak:", error);
+        }
+      };
+      updateStreak();
+    },[]);
   return (
     <SidebarProvider>
       <AppSidebar />

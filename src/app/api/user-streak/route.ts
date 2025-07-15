@@ -1,25 +1,53 @@
-// Example using date-fns-tz
-import { startOfDay, differenceInDays } from "date-fns";
-// import { utcToZonedTime } from 'date-fns-tz';
 import User from "@/lib/models/user.model";
 import { auth } from "@clerk/nextjs/server";
 import { connectDB } from "@/lib/db/db";
 import { NextResponse } from "next/server";
 
 export async function GET() {
-  await connectDB();
-  const { userId } = await auth();
-  if (!userId) {
-    console.log("No userId found, authentication failed.");
-    return NextResponse.json({ message: "Not Authenticated" }, { status: 401 });
-  }
-
   try {
-    const streak = await updateUserStreak(userId);
+    const user = await getUser();
+    if (!user) {
+      return NextResponse.json({ message: "User not found" }, { status: 404 });
+    }
     return NextResponse.json(
-      { message: "Streak updated", streak },
+      { message: "Streak fetched", streak: user.loginStreak },
       { status: 200 }
     );
+  } catch (error) {
+    console.error("Error fetching streak:", error);
+    return NextResponse.json(
+      { message: "Error fetching streak" },
+      { status: 500 }
+    );
+  }
+}
+
+export async function POST() {
+  try {
+    const user = await getUser();
+    if (!user) {
+      return NextResponse.json({ message: "User not found" }, { status: 404 });
+    }
+
+    const today = new Date().setHours(0, 0, 0, 0);
+    const yesterday = new Date(today - 86400000);
+    const last = user.lastLogin?.setHours(0, 0, 0, 0);
+
+    if (!last || last < yesterday) user.loginStreak.currentStreak = 1;
+    else if (last === yesterday) user.loginStreak.currentStreak += 1;
+
+    if (user.loginStreak.currentStreak > user.loginStreak.highestStreak) {
+      user.loginStreak.highestStreak = user.loginStreak.currentStreak;
+    }
+
+    user.lastLogin = new Date();
+    await user.save();
+
+    return NextResponse.json({
+      currentStreak: user.loginStreak.currentStreak,
+      highestStreak: user.loginStreak.highestStreak,
+    });
+
   } catch (error) {
     console.error("Error updating streak:", error);
     return NextResponse.json(
@@ -29,35 +57,16 @@ export async function GET() {
   }
 }
 
-async function updateUserStreak(userId: string): Promise<number> {
+async function getUser() {
+  await connectDB();
+  const { userId } = await auth();
+  if (!userId) {
+    console.log("No userId found, authentication failed.");
+    return NextResponse.json({ message: "Not Authenticated" }, { status: 401 });
+  }
   const user = await User.findOne({ clerkId: userId });
   if (!user) {
     throw new Error("User not found");
   }
-
-  const now = new Date();
-  const todayStart = startOfDay(now);
-  const lastLoginStart = startOfDay(user.lastLogin);
-
-  const daysDifference = differenceInDays(todayStart, lastLoginStart);
-
-  if (daysDifference === 0) {
-    // User already logged in today, do nothing
-  } else if (daysDifference === 1) {
-    // User logged in yesterday, increment streak
-    user.loginStreak += 1;
-  } else {
-    // User missed a day, reset streak
-    user.loginStreak = 1;
-  }
-
-  user.lastLogin = now;
-  await user.save();
-  return user.loginStreak;
+  return user;
 }
-
-// // Example of displaying date in user's timezone
-// function displayInUserTimezone(date, timezone) {
-//     const zonedDate = utcToZonedTime(date, timezone);
-//     return format(zonedDate, 'yyyy-MM-dd HH:mm:ss', { timeZone: timezone });
-// }
